@@ -1,0 +1,143 @@
+@font-face {
+   font-family: 'guilty';
+   src: url('./fonte/Impact\ -\ Strive.otf') format('opentype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+/* NAVBAR */
+header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px 50px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 60px;
+    display: block;
+}
+
+.navbar {
+    display: flex;
+    gap: 40px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #ff002b;
+}
+
+.button-login-cadastro {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.button-cadastro {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn-login {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #ff002b;
+    color: white;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #cc0022;
+}
+
+/* PAGINA INICIAL / HERO */
+
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url('imgs/imagem-hero.png');
+    background-position: center;
+    background-size: cover;
+    padding-left: 80px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero-container h1 {
+    font-family: 'guilty', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 100px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero-container p {
+    color: #ffffff;
+    font-size: 18px;
+    max-width:700px;
+    margin-bottom: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.btn-saiba-mais {
+    display: inline-block;
+    text-decoration: none;
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    padding: 12px 45px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-saiba-mais:hover {
+    background-color: #1a1a1a;
+    color: white;
+}
