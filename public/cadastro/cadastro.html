@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+</head>
+<body>
+
+<!-- AQUI É A NAVBAR -->
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="../imgs/logo.png" alt="Guilty Gear Strive Logo">
+    </div>
+
+    <nav class="navbar">
+      <a href="../index.html">HOME</a>
+      <a href="#personagens">PERSONAGENS</a>
+      <a href="#questionario">QUESTIONÁRIO</a>
+    </nav>
+
+    <div class="button-login-cadastro">
+      <button onclick="window.location.href = '../cadastro/cadastro.html'" class="button-cadastro">C A D A S T R O</button>
+      <button onclick="window.location.href = '../login/login.html'" class="btn-login">L O G I N</button>
+    </div>
+  </div>
+</header>
+
+<!-- LOGIN -->
+
+<section id="cadastro" class="cadastro-wrapper">
+    <div class="cadastro-split">
+        
+        <div class="cadastro-image-side">
+            <img src="../imgs/fundo-cadastro-ky.png" alt="Ky Kiske" class="img-ky-style">
+        </div>
+
+        <div class="cadastro-form-side">
+           <div class="cadastro-inputs">
+            <h1>CADASTRE-SE:</h1>
+            <span>Email:</span> <br>
+            <i class="ph ph-at"></i><input type="text" placeholder="Email">
+            <br>
+            <span>Nome do usuário:</span> <br>
+            <i class="ph ph-user"></i><input type="text" placeholder="Username">
+            <br>
+            <span>Senha:</span> <br>
+            <i class="ph ph-password"></i></i><input type="password" placeholder="Password">
+            <br>
+            <span>Confirmar senha:</span> <br>
+            <i class="ph ph-password"></i><input type="password" placeholder="Password">
+            <br>
+           </div>
+
+            <button class="btn-registrar">R E G I S T R A R</button>
+
+
+
+        </div>
+
+    </div>
+</section>
+</body>
+</html>
