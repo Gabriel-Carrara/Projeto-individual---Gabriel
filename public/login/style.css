@@ -131,6 +131,11 @@ header {
     padding: 60px;
     box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.4); 
     z-index: 2;
+    font-size: 25px;
+}
+
+i{
+    font-size: 30px;
 }
 
 .login-inputs h1{
