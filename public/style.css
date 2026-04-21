@@ -11,7 +11,9 @@ body {
     padding: 0;
     /* box-sizing: border-box; */
 }
-
+h1{
+    font-family: guilty;
+}
 body, html {
     width: 100%;
     height: 100%;
@@ -31,7 +33,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1400px;
+    max-width: 100dvh;
     margin: 0 auto;
 }
 
@@ -98,10 +100,10 @@ header {
     background-image: url('imgs/imagem-hero.png');
     background-position: center;
     background-size: cover;
-    padding-left: 80px;
 }
 
 .hero-content {
+    padding-left: 80px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -109,10 +111,11 @@ header {
 
 .hero-container h1 {
     font-family: 'guilty', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 100px;
+    font-size: 120px;
     color: #1a1a1a;
     text-transform: uppercase;
     margin-bottom: 20px;
+    
 }
 
 .hero-container p {
@@ -140,4 +143,224 @@ header {
 .btn-saiba-mais:hover {
     background-color: #1a1a1a;
     color: white;
+}
+
+
+
+/* BANNER */
+.section {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 50px;
+
+}
+
+.banner-container {
+    background-color: #B05D60;
+    ;
+}
+.text-section h1 {
+    width: 100%;      
+    text-align: center; 
+    display: block;   
+    font-size: 100px;   
+    margin-bottom: 20px;
+}
+.banner-container .text-section {
+    flex: 1;
+    padding-top: 30px;
+    max-width: 50%;
+    text-align: justify;
+    
+}
+.text-section p {
+    color: white;
+    font-size: 20px;
+}
+
+#img {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img-dizzy {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.banner-container .tecnico {
+    padding-left: 40px;
+}
+
+.img{
+    display: flex;
+    justify-self: end;
+    background-image: url('imgs/dizzy.jpg');
+}
+
+
+
+
+.banner-container-reverso .section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+}
+
+.banner-container-reverso {
+    background-color: #B05D60;
+    padding: 60px 100px;
+    min-height: 80vh;
+}
+.banner-container-reverso .text-section{
+text-align: justify;
+
+}
+.banner-container-reverso h1{
+    justify-self: center;
+}
+
+
+#img-ky {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.img-ky-style {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4);
+    display: block;
+}
+
+.banner-container-reverso .text-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.pills-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pill {
+    background-color: #D9D9D9;
+    color: #1a1a1a;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 20px;
+    text-align: center;
+    flex: 1; 
+}
+
+
+/* QUIZ */
+
+
+.quiz-container {
+    height: 100vh;
+    background-image: url(imgs/fundo-quiz.png);
+    background-size: cover;
+    /* background-position: center; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-overlay {
+    background-color: rgba(176, 93, 96, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* padding: 20px; */
+}
+
+.quiz-overlay h1 {
+    font-size: 80px;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+
+.quiz-overlay p {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-family: Impact, sans-serif;
+}
+
+.btn-questionario{
+    background-color: transparent;
+    color: black;
+    border: 3px solid;
+    padding: 10px 40px;
+    border-radius: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-color: black;
+}
+
+.btn-questionario:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 40px 100px 20px 100px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.footer-text p{
+    margin: 5px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.footer-divisor {
+    height: 80px;
+    width: 1px;
+    background-color: white;
+    margin: 0 50px;
+}
+
+
+.copyright {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+    color: #888;
 }
