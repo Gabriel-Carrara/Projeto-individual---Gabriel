@@ -110,6 +110,138 @@
 </footer>
 
 
+<div class="player-container">
+        <div class="player-content">
+            <p>Música: <span id="span_musica">---</span></p>
+            <p>Personagem: <span id="span_personagem">---</span></p>
+        </div>
+          
+        <div class="disco-wrapper">
+            <img src="imgs/disco.png" id="img_disco" class="disco-girando">
+        </div>
+        <button onclick="pularMusica()" class="btn-skip-style">SKIP >></button>
+        <button onclick="mutarMusica()" id="btn_mudo" class="btn-mudo-style">MUTE</button>
+          
+        <audio id="audio_tema"></audio>
+    </div>
+
 
 </body>
-</html>
+</html> <script>
+function pularMusica() {
+    // Sorteia de 1 a 16
+    let sorteio = parseInt(Math.random() * 17) + 1;
+    
+    let nomeM = "";
+    let nomeP = "";
+
+    if (sorteio == 1) {
+        nomeM = "Smell of the Game";
+        nomeP = "Sol Badguy";
+    }
+    if (sorteio == 2) {
+        nomeM = "Roar of the Spark";
+        nomeP = "Ky Kiske";
+    }
+    if (sorteio == 3) {
+        nomeM = "Mirror of the World";
+        nomeP = "Baiken";
+    }
+    if (sorteio == 4) {
+        nomeM = "Alone Infection";
+        nomeP = "Faust";
+    }
+    if (sorteio == 5) {
+        nomeM = "Armor-clad Faith";
+        nomeP = "Potemkin";
+    }
+    if (sorteio == 6) {
+        nomeM = "Drift";
+        nomeP = "Happy Chaos";
+    }
+    if (sorteio == 7) {
+        nomeM = "Just Lean";
+        nomeP = "Johny";
+    }
+    if (sorteio == 8) {
+        nomeM = "Let me carve your<br> way";
+        nomeP = "Zato-1";
+    }
+    if (sorteio == 9) {
+        nomeM = "Love the Subhuman <br>Self";
+        nomeP = "Millia";
+    }
+    if (sorteio == 10) {
+        nomeM = "Necessary Discrepancy";
+        nomeP = "Ramlethal";
+    }
+    if (sorteio == 11) {
+        nomeM = "Out of the Box";
+        nomeP = "Axl";
+    }
+    if (sorteio == 12) {
+        nomeM = "Requiem";
+        nomeP = "I-no";
+    }
+    if (sorteio == 13) {
+        nomeM = "The Disaster of <br> Passion";
+        nomeP = "May";
+    }
+    if (sorteio == 14) {
+        nomeM = "The Kiss of Death";
+        nomeP = "Goldlewis";
+    }
+    if (sorteio == 15) {
+        nomeM = "Trigger";
+        nomeP = "Giovanna";
+    }
+    if (sorteio == 16) {
+        nomeM = "Ups and Downs";
+        nomeP = "Slayer";
+    }
+    if (sorteio == 17) {
+        nomeM = "What do you Fight<br> for";
+        nomeP = "Nagoriyuki";
+    }
+    span_musica.innerHTML = nomeM;
+    span_personagem.innerHTML = nomeP;
+    
+    audio_tema.src = "musicas/" + sorteio + ".mp3";
+    audio_tema.play();
+
+    img_disco.style.animationPlayState = "running";
+}
+
+audio_tema.onended = function() {
+    pularMusica();
+};
+
+document.body.onclick = function() {
+    pularMusica();
+    document.body.onclick = null;
+};
+
+function mutarMusica() {
+    // Se não estiver mudo (false)
+    if (audio_tema.muted == false) {
+        audio_tema.muted = true; // Coloca no mudo
+        btn_mudo.innerHTML = "UNMUTE"; // Muda o texto do botão
+        btn_mudo.style.backgroundColor = "white";
+        btn_mudo.style.color = "black";
+        
+        // Opcional: Para o disco de girar se estiver mudo
+        img_disco.style.animationPlayState = "paused";
+    } 
+    // Se já estiver mudo (true)
+    else {
+        audio_tema.muted = false; // Tira do mudo
+        btn_mudo.innerHTML = "MUTE"; // Volta o texto original
+        btn_mudo.style.backgroundColor = "#333";
+        btn_mudo.style.color = "white";
+        
+        // Volta a girar o disco
+        img_disco.style.animationPlayState = "running";
+    }
+}
+
+</script>
