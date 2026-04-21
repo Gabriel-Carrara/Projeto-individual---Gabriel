@@ -153,12 +153,10 @@ header {
     justify-content: center;
     padding: 60px;
     box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.4);
-    font-size: 25px;
+    font-size: 20px;
 }
 
-i{
-    font-size: 30px;
-}
+
 .cadastro-form-side .cadastro-inputs h1{
     display: flex;
     justify-self: center;
