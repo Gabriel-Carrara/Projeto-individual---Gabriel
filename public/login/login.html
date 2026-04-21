@@ -9,7 +9,8 @@
 </head>
 <body>
 
-<!-- AQUI É A NAVBAR -->
+
+    <!-- AQUI É A NAVBAR -->
 <header>
   <div class="header-container">
     <div class="logo">
@@ -23,46 +24,44 @@
     </nav>
 
     <div class="button-login-cadastro">
-      <button class="button-cadastro">C A D A S T R O</button>
-      <button onclick="window.location.href = './login.html'" class="btn-login">L O G I N</button>
+      <button onclick="window.location.href = '../cadastro/cadastro.html'" class="button-cadastro">C A D A S T R O</button>
+      <button onclick="window.location.href = '../login/login.html'" class="btn-login">L O G I N</button>
     </div>
   </div>
 </header>
 
-<!-- LOGIN -->
 
-<section id="cadastro" class="cadastro-wrapper">
-    <div class="cadastro-split">
+<section id="login" class="login-wrapper">
+    <div class="login-split">
         
-        <div class="cadastro-image-side">
-            <img src="../imgs/fundo-cadastro-ky.png" alt="Ky Kiske" class="img-ky-style">
+        <div class="login-form-side">
+            <div class="login-inputs">
+                <h1>LOGIN:</h1>
+                <span>Email:</span> <br>
+                    <i class="ph ph-at"></i><input type="text" placeholder="Email">
+                <br>
+                <span>Senha:</span> <br>
+                <i class="ph ph-password"></i><input type="password" placeholder="Password">
+                <br>
+                <a href="../cadastro/cadastro.html">Não tem conta? Cadastre-se</a>
+            </div>
+            
+            <button class="btn-login-style">E N T R A R</button>
         </div>
 
-        <div class="cadastro-form-side">
-           <div class="cadastro-inputs">
-            <h1>CADASTRE-SE:</h1>
-            <span>Email:</span> <br>
-            <i class="ph ph-at"></i><input type="text" placeholder="Email">
-            <br>
-            <span>Nome do usuário:</span> <br>
-            <i class="ph ph-user"></i><input type="text" placeholder="Username">
-            <br>
-            <span>Senha:</span> <br>
-            <i class="ph ph-password"></i></i><input type="text" placeholder="Password">
-            <br>
-            <span>Confirmar senha:</span> <br>
-            <i class="ph ph-password"></i><input type="text" placeholder="Password">
-            <br>
-            <a href="../cadastro/cadastro.html">Não tem conta?</a>
-           </div>
-
-            <button class="btn-registrar">R E G I S T R A R</button>
-
-
-
+        <div class="login-image-side">
+            <img src="../imgs/fundo-login-sol.png" alt="Sol Badguy" class="img-sol-style">
         </div>
 
     </div>
 </section>
+
+
+
+
+
+
+
+
 </body>
 </html>

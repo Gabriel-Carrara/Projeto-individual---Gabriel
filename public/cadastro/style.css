@@ -97,49 +97,73 @@ header {
     background-color: #cc0022;
 }
 
-
-
-
-
-
 /* LOGIN */
 
 
 
-.login-wrapper {
+.cadastro-container {
+    background-image: url('../imgs/fundo-cadastro-ky.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-attachment: fixed;
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro-wrapper {
     height: 100vh;
     width: 100%;
     background-color: #1a1a1a;
 }
 
-.login-split {
+.cadastro-split {
     display: flex;
     width: 100%;
     height: 100%;
     align-items: stretch;
 }
 
-/* --- COLUNA DO FORMULÁRIO --- */
-
-.login-form-side {
+/* --- COLUNA DA ESQUERDA (IMAGEM) --- */
+.cadastro-image-side {
     flex: 1;
-    background-color: #B05D60; 
+    background-color: #0d0d0d; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-ky-style {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    image-rendering: high-quality;
+}
+
+/* --- COLUNA DA DIREITA  --- */
+.cadastro-form-side {
+    flex: 1;
+    background-color: #B05D60;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 60px;
-    box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.4); 
-    z-index: 2;
+    box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.4);
+    font-size: 20px;
 }
 
-.login-inputs h1{
+
+.cadastro-form-side .cadastro-inputs h1{
     display: flex;
     justify-self: center;
     font-size: 80px;
 }
 
-.login-form-side .login-inputs input{
+.cadastro-form-side .cadastro-inputs input{
     width: 400px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -151,45 +175,19 @@ header {
 }
 
 
-.btn-login-style {
+.btn-registrar {
     background-color: transparent;
     color: black;
     border: 4px solid black;
-    padding: 12px 60px;
+    padding: 12px 45px;
     border-radius: 30px;
-    font-size: 18px;
-    font-family: Impact, sans-serif;
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 40px;
+    transition: all 0.3s;
 }
 
-.btn-login-style:hover {
-    background-color: black;
-    color: white;
-}
-
-.login-inputs a {  
-    font-size: 14px;
-    color: black;
-    text-decoration: none;
-}
-
-.login-inputs a:hover {
-    text-decoration: underline;
-}
-
-/* --- COLUNA DA IMAGEM  --- */
-.login-image-side {
-    flex: 1; 
-    background-color: #0d0d0d; 
-    display: flex;
-    overflow: hidden;
-}
-
-.img-sol-style {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    image-rendering: high-quality;
+.btn-registrar:hover {
+background-color: black;
+color: white;
 }
