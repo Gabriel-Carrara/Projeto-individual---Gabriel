@@ -128,7 +128,6 @@ header {
 
 
 .btn-saiba-mais {
-    display: inline-block;
     text-decoration: none;
     background-color: transparent;
     color: #1a1a1a;
@@ -190,7 +189,6 @@ gap: 50px;
     max-width: 600px;
     height: auto;
     border-radius: 10px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .banner-container .tecnico {
@@ -218,6 +216,7 @@ gap: 50px;
     background-color: #B05D60;
     padding: 60px 100px;
     min-height: 80vh;
+    backdrop-filter: blur(Xpx)
 }
 .banner-container-reverso .text-section{
 text-align: justify;
@@ -364,3 +363,8 @@ text-align: justify;
     margin-top: 20px;
     color: #888;
 }
+
+
+
+
+
