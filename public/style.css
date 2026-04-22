@@ -109,6 +109,7 @@ header {
     background-image: url('imgs/imagem-hero.png');
     background-position: center;
     background-size: cover;
+    position: relative;
 }
 
 .hero-content {
@@ -161,13 +162,22 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 gap: 50px;
+}
 
+.banner-container::after {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, #B05D60, transparent );
 }
 
 .banner-container {
     background-color: #B05D60;
-    ;
 }
+
 .text-section h1 {
     width: 100%;      
     text-align: center; 
@@ -290,6 +300,16 @@ text-align: justify;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.quiz-container::after {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #B05D60, transparent );
 }
 
 .quiz-overlay {
@@ -443,4 +463,18 @@ text-align: justify;
     cursor: pointer;
     font-size: 10px;
     z-index: 10000;
+}
+
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+body::-webkit-scrollbar{
+    display: none;
 }
