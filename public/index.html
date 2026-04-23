@@ -12,12 +12,12 @@
 <header>
   <div class="header-container">
     <div class="logo">
-      <img src="imgs/logo.png" alt="Guilty Gear Strive Logo">
+      <img src="./imgs/logo.png" alt="Guilty Gear Strive Logo">
     </div>
 
     <nav class="navbar">
-      <a href="#home">HOME</a>
-      <a href="#personagens">PERSONAGENS</a>
+      <a href="./index.html">HOME</a>
+      <a href="./personagens/personagens.html">PERSONAGENS</a>
       <a href="#questionario">QUESTIONÁRIO</a>
     </nav>
 
@@ -94,15 +94,17 @@
 
 <footer class="footer">
   <div class="footer-content">
-    <div class="footer-text">
-      <p>PROJETO INDIVIDUAL</p>
-      <p>GABRIEL SILVA CARRAR</p>
-      <p>SPTECH</p>
-    </div>
-    <div class="divisor"></div>
-    <div class="footer-logo">
-    <i class="ph ph-github-logo"></i>
-    </div>
+      <div class="footer-logo">
+      <a href="https://github.com/Gabriel-Carrara/Projeto-individual---Gabriel">
+          <i class="ph ph-github-logo"></i>
+      </a>
+      </div>
+      <div class="divisor"></div>
+      <div class="footer-text">
+        <p>PROJETO INDIVIDUAL</p>
+        <p>GABRIEL SILVA CARRAR</p>
+        <p>SPTECH</p>
+      </div>
   </div>
 
   <p class="copyright">© ARC SYSTEM WORKS All rights reserved</p>
@@ -120,10 +122,12 @@
         </div>
         <button onclick="pularMusica()" class="btn-skip-style">SKIP >></button>
         <button onclick="mutarMusica()" id="btn_mudo" class="btn-mudo-style">MUTE</button>
-          
         <audio id="audio_tema"></audio>
+        <div id="div_gif_wrapper" class="gif-wrapper">
+        <img src="" id="img_gif_personagem" class="img-gif-style">
     </div>
-
+    </div>
+    
 
 </body>
 </html> <script>
@@ -135,7 +139,7 @@ function pularMusica() {
     let nomeP = "";
 
     if (sorteio == 1) {
-        nomeM = "Smell of the Game";
+        nomeM = "Find your one way";
         nomeP = "Sol Badguy";
     }
     if (sorteio == 2) {
@@ -167,7 +171,7 @@ function pularMusica() {
         nomeP = "Zato-1";
     }
     if (sorteio == 9) {
-        nomeM = "Love the Subhuman <br>Self";
+        nomeM = "Love the Subhuman Self";
         nomeP = "Millia";
     }
     if (sorteio == 10) {
@@ -199,22 +203,27 @@ function pularMusica() {
         nomeP = "Slayer";
     }
     if (sorteio == 17) {
-        nomeM = "What do you Fight<br> for";
-        nomeP = "Nagoriyuki";
+        nomeM = "Perfection can't please me";
+        nomeP = "Jack-O";
     }
     span_musica.innerHTML = nomeM;
     span_personagem.innerHTML = nomeP;
     
-    audio_tema.src = "musicas/" + sorteio + ".mp3";
+
+    audio_tema.src = "musicas/" + sorteio + ".mp3"; // Ele percorre o caminho e pega a musica com o sorteio
     audio_tema.play();
+
+    img_gif_personagem.src = "imgs/character-music-gifs/"+sorteio+".gif"; //msm coisa mas com o gif
+    div_gif_wrapper.style.display = "block";
 
     img_disco.style.animationPlayState = "running";
 }
-
+// quando termina de tocar, começa a proxima automaticamente
 audio_tema.onended = function() {
     pularMusica();
 };
 
+// para tocar a musica qndo clicarem na tela
 document.body.onclick = function() {
     pularMusica();
     document.body.onclick = null;

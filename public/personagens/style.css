@@ -1,0 +1,98 @@
+@font-face {
+   font-family: 'guilty';
+   src: url('./fonte/Impact\ -\ Strive.otf') format('opentype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+/* GERAL */
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+h1 {
+    font-family: 'guilty';
+}
+
+/* NAVBAR / HEADER */
+header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px 50px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 60px;
+    display: block;
+}
+
+.navbar {
+    display: flex;
+    gap: 40px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #ff002b;
+}
+
+/* BOTÕES DE LOGIN E CADASTRO */
+.button-login-cadastro {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.button-cadastro, .btn-login {
+    font-family: Impact, sans-serif;
+    padding: 8px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.button-cadastro {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.button-cadastro:hover {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.btn-login {
+    background-color: #ff002b;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #cc0022;
+}

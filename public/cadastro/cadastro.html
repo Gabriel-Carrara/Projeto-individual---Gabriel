@@ -9,25 +9,6 @@
 </head>
 <body>
 
-<!-- AQUI É A NAVBAR -->
-<header>
-  <div class="header-container">
-    <div class="logo">
-      <img src="../imgs/logo.png" alt="Guilty Gear Strive Logo">
-    </div>
-
-    <nav class="navbar">
-      <a href="../index.html">HOME</a>
-      <a href="#personagens">PERSONAGENS</a>
-      <a href="#questionario">QUESTIONÁRIO</a>
-    </nav>
-
-    <div class="button-login-cadastro">
-      <button onclick="window.location.href = '../cadastro/cadastro.html'" class="button-cadastro">C A D A S T R O</button>
-      <button onclick="window.location.href = '../login/login.html'" class="btn-login">L O G I N</button>
-    </div>
-  </div>
-</header>
 
 <!-- LOGIN -->
 
@@ -39,6 +20,12 @@
         </div>
 
         <div class="cadastro-form-side">
+              <div class="login-inputs">
+              <div class="get-out">
+                <a style="text-decoration: none;" href="../index.html">
+                  <i class="ph ph-sign-out"></i>
+                </a>
+              </div>
            <div class="cadastro-inputs">
             <h1>CADASTRE-SE:</h1>
             <span>Email:</span> <br>
@@ -53,8 +40,8 @@
             <span>Confirmar senha:</span> <br>
             <i class="ph ph-password"></i><input type="password" placeholder="Password">
             <br>
+            <a href="../login/login.html">Já tem conta? Faça login</a>
            </div>
-
             <button class="btn-registrar">R E G I S T R A R</button>
 
 
