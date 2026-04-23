@@ -20,9 +20,10 @@ body {
 h1 {
     font-family: 'guilty';
 }
-.get-out {
+.get-out { 
+    display: flex;
     text-decoration: none;
-    width: 50px;
+    width: 420px;
 }
 .get-out a{
     width: 50px;
@@ -31,7 +32,15 @@ h1 {
     font-size: 50px;
     display: flex;
     justify-self: start;
+    
 }
+.get-out img{
+    width: 200px;
+    display: flex;
+    justify-self: flex-end;
+    padding-left: 250px;
+} 
+
 i{
     color: #0d0d0d;
     font-size: 30px;

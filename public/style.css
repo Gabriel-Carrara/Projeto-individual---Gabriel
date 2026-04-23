@@ -197,7 +197,7 @@ gap: 50px;
     font-size: 20px;
 }
 
-#img {
+.img {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -246,7 +246,7 @@ text-align: justify;
 }
 
 
-#img-ky {
+.img-ky {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -457,7 +457,7 @@ color: white;
     border-radius: 50%;
     animation: girar 3s linear infinite;
 }
-/* obrigado rafael 🙏🙏 */
+
 @keyframes girar {
     from {
         transform: rotate(0deg);
