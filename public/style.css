@@ -14,7 +14,7 @@ body, html {
 }
 
 body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
 h1 {
@@ -385,7 +385,17 @@ text-align: justify;
     margin: 0 50px;
 }
 
-
+.footer-logo i{
+font-size: 60px;
+margin-left: 200px;
+color: white;
+}
+.footer-logo a{
+    text-decoration: none;
+}
+.footer-logo i:hover{
+ cursor: pointer;
+}
 .copyright {
     text-align: center;
     font-size: 12px;
@@ -398,7 +408,7 @@ text-align: justify;
 
 .player-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     width: 320px;
     height: 100px;
     background-image: url('imgs/music-player.png');
@@ -411,13 +421,35 @@ text-align: justify;
 
 .player-content{
     padding-left: 5px;
+    width: 200px;
 }
 
-.disco-wrapper {
+.disco-wrapper img{
     position: absolute;
     right: 10px;
     top: 12px;
 }
+
+.gif-wrapper{
+    position: absolute;
+    top: -90px;
+    left: 155px;
+    width: 105px;
+    height: 105px;
+    z-index: 9998;
+    display: none;
+    overflow: hidden;
+}
+
+.mostra-gif {
+    display: block;
+}
+.img-gif-style {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 
 .disco-girando {
     width: 75px;
