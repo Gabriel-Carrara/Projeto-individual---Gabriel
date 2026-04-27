@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+</head>
+<body>
+<!-- AQUI É A NAVBAR -->
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="../imgs/logo.png" alt="Guilty Gear Strive Logo">
+    </div>
+
+    <nav class="navbar">
+      <a href="../index.html">HOME</a>
+      <a href="../personagens/personagens.html">PERSONAGENS</a>
+      <a href="../questionario/questionario.html">QUESTIONÁRIO</a>
+    </nav>
+
+    <div class="button-login-cadastro">
+      <button onclick="window.location.href = '../cadastro/cadastro.html'" class="button-cadastro">C A D A S T R O</button>
+      <button onclick="window.location.href = '../login/login.html'" class="btn-login">L O G I N</button>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+        <div id="tela-inicio">
+            <h1>QUESTIONÁRIO</h1>
+            <p>Descubra seu personagem no Guilty Gear</p>
+            <button class="btn" onclick="iniciar()">HEAVEN OR HELL</button>
+        </div>
+
+        <div id="tela-jogo" class="hidden">
+            <h2 id="texto-pergunta"></h2>
+            <button class="btn" id="btn-opt1" onclick="escolha(1)"></button>
+            <button class="btn" id="btn-opt2" onclick="escolha(2)"></button>
+        </div>
+
+        <div id="tela-resultado" class="hidden">
+            <h2 id="nome-resultado"></h2>
+            <img id="img-personagem" src="" alt="">
+            <br><br>
+            <button class="btn" onclick="location.reload()">TENTAR NOVAMENTE</button>
+        </div>
+    </div>
+
+    <script>
+        // vetores para armazenar os dados
+        var nomes = ["Sol BadGuy", "Ky Kiske", "May", "Potemkin", "Chipp Zanuff", "Ramlethal", "I-no", "Zato-1", "Happy Chaos", "Nagoriyuki", "Jack-O", "Baiken", "Faust", "Leo Whitefang", "Millia Rage", "Axl Low", "Giovanna", "Slayer", "Testament", "Dizzy"];
+        // vetor pra armazenar as imagens
+        var caminhosFotos = [
+            "../imgs/character-icons/sol-badguy.png", "../imgs/character-icons/ky-kyske.png", "../imgs/character-icons/may.png", "../imgs/character-icons/pottemkin.png.png", 
+            "../imgs/character-icons/chipp.png", "../imgs/character-icons/ramlethal.png", "../imgs/character-icons/rxx82us-1-306x305.png", "../imgs/character-icons/zato-1.png", 
+            "../imgs/character-icons/happy-chaos.png", "../imgs/character-icons/nagoriyuki.png", "../imgs/character-icons/jko.png", "../imgs/character-icons/baiken.png", 
+            "../imgs/character-icons/faust.png", "../imgs/character-icons/Leo.png", "../imgs/character-icons/millia.png", "../imgs/character-icons/axl.png", 
+            "../imgs/character-icons/giovanna.png", "../imgs/character-icons/slayer.png", "../imgs/character-icons/icon-1ubduiak.png", "../imgs/character-icons/dizzy.png"
+        ];
+
+        // variavel pra controlar onde está
+        var passo = "inicio";
+        // adiciona a classe "hidden" pra sair da tela (só sumir msm)
+        // alem de tirar a classe "hidden" da tela-jogo
+        // também começa as questoes
+        function iniciar() {
+            document.getElementById("tela-inicio").classList.add("hidden");
+            document.getElementById("tela-jogo").classList.remove("hidden");
+            passo = "pergunta_paciencia";
+            atualizarTela();
+        }
+
+        function atualizarTela() {
+            // o cemiterio de ifs
+            if (passo == "pergunta_paciencia") {
+                document.getElementById("texto-pergunta").innerHTML = "Qual é o seu nível de paciência?";
+                document.getElementById("btn-opt1").innerHTML = "Zero paciência!";
+                document.getElementById("btn-opt2").innerHTML = "Eu espero o momento certo.";
+            }
+            else if (passo == "pergunta_distancia") {
+                document.getElementById("texto-pergunta").innerHTML = "Como você prefere atacar?";
+                document.getElementById("btn-opt1").innerHTML = "Colado no oponente.";
+                document.getElementById("btn-opt2").innerHTML = "Qualquer distância.";
+            }
+            else if (passo == "pergunta_velocidade") {
+                document.getElementById("texto-pergunta").innerHTML = "O que você prioriza no combate?";
+                document.getElementById("btn-opt1").innerHTML = "Velocidade extrema.";
+                document.getElementById("btn-opt2").innerHTML = "Pressão constante.";
+            }
+            else if (passo == "pergunta_direto") {
+                document.getElementById("texto-pergunta").innerHTML = "Prefere um estilo mais direto?";
+                document.getElementById("btn-opt1").innerHTML = "Sim, ofensiva total.";
+                document.getElementById("btn-opt2").innerHTML = "Não, prefiro mobilidade.";
+            }
+            else if (passo == "pergunta_plano") {
+                document.getElementById("texto-pergunta").innerHTML = "Quer um plano de jogo simples?";
+                document.getElementById("btn-opt1").innerHTML = "Sim, direto ao ponto.";
+                document.getElementById("btn-opt2").innerHTML = "Não, quero mecânicas complexas.";
+            }
+            else if (passo == "pergunta_risco") {
+                document.getElementById("texto-pergunta").innerHTML = "Gosta de arriscar tudo?";
+                document.getElementById("btn-opt1").innerHTML = "Sim, aposto tudo!";
+                document.getElementById("btn-opt2").innerHTML = "Não, prefiro consistência.";
+            }
+            else if (passo == "pergunta_animais") {
+                document.getElementById("texto-pergunta").innerHTML = "Gosta de lutar com ajuda de animais?";
+                document.getElementById("btn-opt1").innerHTML = "Sim!";
+                document.getElementById("btn-opt2").innerHTML = "Não, prefiro resolver sozinho.";
+            }
+            else if (passo == "pergunta_treino") {
+                document.getElementById("texto-pergunta").innerHTML = "Quanto tempo quer passar no treino?";
+                document.getElementById("btn-opt1").innerHTML = "O básico.";
+                document.getElementById("btn-opt2").innerHTML = "Vou morar no modo treino.";
+            }
+            else if (passo == "pergunta_conforto") {
+                document.getElementById("texto-pergunta").innerHTML = "Qual sua zona de conforto?";
+                document.getElementById("btn-opt1").innerHTML = "Perto ou Média distância.";
+                document.getElementById("btn-opt2").innerHTML = "Longe do oponente.";
+            }
+            else if (passo == "pergunta_agarrao") {
+                document.getElementById("texto-pergunta").innerHTML = "Gosta de agarrões (Grappler)?";
+                document.getElementById("btn-opt1").innerHTML = "Sim!";
+                document.getElementById("btn-opt2").innerHTML = "Não, prefiro usar técnicas.";
+            }
+            else if (passo == "pergunta_honesto") {
+                document.getElementById("texto-pergunta").innerHTML = "Busca um personagem 'honesto'?";
+                document.getElementById("btn-opt1").innerHTML = "Sim, fundamentos são a base.";
+                document.getElementById("btn-opt2").innerHTML = "Não, quero mecânicas variadas.";
+            }
+            else if (passo == "pergunta_certeza") {
+                document.getElementById("texto-pergunta").innerHTML = "Realmente quer ser honesto?";
+                document.getElementById("btn-opt1").innerHTML = "Sim!";
+                document.getElementById("btn-opt2").innerHTML = "Pensando bem, quero impacto.";
+            }
+            else if (passo == "pergunta_improviso") {
+                document.getElementById("texto-pergunta").innerHTML = "Quanto você gosta de improvisar?";
+                document.getElementById("btn-opt1").innerHTML = "Apenas o necessário.";
+                document.getElementById("btn-opt2").innerHTML = "A partida inteira.";
+            }
+            else if (passo == "pergunta_irritar") {
+                document.getElementById("texto-pergunta").innerHTML = "Quanto quer irritar o oponente?";
+                document.getElementById("btn-opt1").innerHTML = "Só um pouco.";
+                document.getElementById("btn-opt2").innerHTML = "Quero que ele desinstale o jogo.";
+            }
+            else if (passo == "pergunta_vencer") {
+                document.getElementById("texto-pergunta").innerHTML = "Você ainda quer ganhar?";
+                document.getElementById("btn-opt1").innerHTML = "Sim, com eficiência.";
+                document.getElementById("btn-opt2").innerHTML = "Não, prefiro irritar.";
+            }
+        }
+
+        function escolha(opcaoClicada) {
+            //  cemiterio de ifs 2
+            if (passo == "pergunta_paciencia") {
+                if (opcaoClicada == 1) { passo = "pergunta_distancia"; } 
+                else { passo = "pergunta_conforto"; }
+            }
+            else if (passo == "pergunta_distancia") {
+                if (opcaoClicada == 1) { passo = "pergunta_velocidade"; } 
+                else { passo = "pergunta_plano"; }
+            }
+            else if (passo == "pergunta_velocidade") {
+                if (opcaoClicada == 1) { finalizar(4); } // Chipp
+                else { passo = "pergunta_direto"; }
+            }
+            else if (passo == "pergunta_direto") {
+                if (opcaoClicada == 1) { finalizar(6); } // I-no
+                else { finalizar(14); } // Millia
+            }
+            else if (passo == "pergunta_plano") {
+                if (opcaoClicada == 1) { passo = "pergunta_risco"; } 
+                else { passo = "pergunta_treino"; }
+            }
+            else if (passo == "pergunta_risco") {
+                if (opcaoClicada == 1) { finalizar(13); } // Leo
+                else { passo = "pergunta_animais"; }
+            }
+            else if (passo == "pergunta_animais") {
+                if (opcaoClicada == 1) { finalizar(16); } // Giovanna
+                else { finalizar(0); } // Sol
+            }
+            else if (passo == "pergunta_treino") {
+                if (opcaoClicada == 1) { finalizar(19); } // Dizzy
+                else { finalizar(7); } // Zato
+            }
+            else if (passo == "pergunta_conforto") {
+                if (opcaoClicada == 1) { passo = "pergunta_agarrao"; } 
+                else { passo = "pergunta_irritar"; }
+            }
+            else if (passo == "pergunta_agarrao") {
+                if (opcaoClicada == 1) { finalizar(3); } // Potemkin
+                else { passo = "pergunta_honesto"; }
+            }
+            else if (passo == "pergunta_honesto") {
+                if (opcaoClicada == 1) { passo = "pergunta_certeza"; } 
+                else { passo = "pergunta_improviso"; }
+            }
+            else if (passo == "pergunta_certeza") {
+                if (opcaoClicada == 1) { finalizar(1); } // Ky
+                else { finalizar(9); } // Nago
+            }
+            else if (passo == "pergunta_improviso") {
+                if (opcaoClicada == 1) { finalizar(5); } // Ramlethal
+                else { finalizar(12); } // Faust
+            }
+            else if (passo == "pergunta_irritar") {
+                if (opcaoClicada == 1) { finalizar(18); } // Testament
+                else { passo = "pergunta_vencer"; }
+            }
+            else if (passo == "pergunta_vencer") {
+                if (opcaoClicada == 1) { finalizar(8); } // Chaos
+                else { finalizar(15); } // Axl
+            }
+
+            // Se não finalizou, atualiza os textos da próxima pergunta
+            // vê se a pergunta tem "pergunta", se tiver (todas tem) ele atualiza a tela, só termina quando chegar em algum resultado (finalizar()) 
+            if (passo.indexOf("pergunta") != -1) {
+                atualizarTela();
+            }
+        }
+
+        function finalizar(indice) {
+            document.getElementById("tela-jogo").classList.add("hidden");
+            document.getElementById("tela-resultado").classList.remove("hidden");
+            document.getElementById("nome-resultado").innerHTML = nomes[indice];
+            document.getElementById("img-personagem").src = caminhosFotos[indice];
+        }
+    </script>
+</body>
+</html>
