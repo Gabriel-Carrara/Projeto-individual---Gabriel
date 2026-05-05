@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strive Stats | Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="hourChange()">
+    
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>STRIVE DASH</h2>
+            <nav>
+                <a href="dashboard.html">DASHBOARD</a>
+                <a href="../personagens/personagens.html">PERSONAGENS</a>
+                <a href="../index.html">SAIR</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+              <span class="saudacao">
+                  <span id="greetings"></span> <span id="username">teste</span>
+              </span>  
+            </header>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>PERSONAGEM ATUAL</h3>
+                    <p>SOL BADGUY</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>VOTOS TOTAIS</h3>
+                    <p>247</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>POPULARIDADE DOS PERSONAGENS</h2>
+                <div class="chart-wrapper">
+                    <canvas id="graficoPersonagens"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+
+        const ctx = document.getElementById('graficoPersonagens').getContext('2d');
+        
+        const personagens = [
+            'Sol Badguy', 'Ky Kiske', 'Baiken', 'Faust', 'Potemkin', 
+            'Ramlethal', 'May', 'Chipp', 'Nagoriyuki', 'Dizzy'
+        ];
+
+        const votos = [25, 22, 24, 10, 21, 25, 23, 20, 24, 18];
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: personagens,
+                datasets: [{
+                    label: 'Votos',
+                    data: votos,
+                    backgroundColor: 'rgba(255, 0, 43, 0.7)',
+                    borderColor: '#ff002b',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 30,
+                        grid: { color: '#333' },
+                        ticks: { color: '#fff', font: { family: 'Impact' } }
+                    },
+                    x: { 
+                        grid: { display: false },
+                        ticks: { 
+                            color: '#fff', 
+                            font: { family: 'Impact', size: 12},
+                            maxRotation: 0,
+                            minRotation: 0
+                        }
+                    }
+                },
+
+            }
+        });
+
+
+
+
+        function hourChange() {
+            let horas = new Date().getHours()
+            if(horas>=18){
+                greetings.innerHTML='Boa noite!'
+            } else if (horas>=12){
+                greetings.innerHTML='Boa tarde!'
+            } else {
+                greetings.innerHTML='Bom dia!'
+            }
+
+        }
+
+
+
+
+    </script>
+</body>
+</html>

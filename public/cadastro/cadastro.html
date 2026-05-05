@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
         <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-</head>
-<body>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+        <script src="../js/sessao.js"></script>
 
+    </head>
+    <body>
 
 <!-- LOGIN -->
 
@@ -16,11 +17,10 @@
     <div class="cadastro-split">
         
         <div class="cadastro-image-side">
-            <img src="../imgs/fundo-cadastro-ky.png" alt="Ky Kiske" class="img-ky-style">
         </div>
 
         <div class="cadastro-form-side">
-            <div class="login-inputs">
+            <div class="cadastro-inputs">
                 <div class="get-out">
                     <a style="text-decoration: none;" href="../index.html">
                         <i class="ph ph-sign-out"></i>
@@ -30,20 +30,24 @@
            <div class="cadastro-inputs">
             <h1>CADASTRE-SE:</h1>
             <span>Email:</span> <br>
-            <i class="ph ph-at"></i><input type="text" placeholder="Email">
+            <i class="ph ph-at"></i><input id="ipt_email" type="text" placeholder="Email">
             <br>
+            <span class="error" id="email_erro"></span> <br>
             <span>Nome do usuário:</span> <br>
-            <i class="ph ph-user"></i><input type="text" placeholder="Username">
+            <i class="ph ph-user"></i><input id="ipt_username" type="text" placeholder="Username">
             <br>
+            <span class="error" id="user_erro"></span> <br>            
             <span>Senha:</span> <br>
-            <i class="ph ph-password"></i></i><input type="password" placeholder="Password">
+            <i class="ph ph-password"></i></i><input id="ipt_password" type="password" placeholder="Password">
             <br>
+            <span class="error" id="pass_erro"></span> <br>            
             <span>Confirmar senha:</span> <br>
-            <i class="ph ph-password"></i><input type="password" placeholder="Password">
-            <br>
+            <i class="ph ph-password"></i><input id="ipt_password_confirm" type="password" placeholder="Password">
+            <br>    
+            <span class="error" id="confirmation_erro"></span> <br>            
             <a href="../login/login.html">Já tem conta? Faça login</a>
            </div>
-            <button class="btn-registrar">R E G I S T R A R</button>
+            <button class="btn-registrar" onclick="cadastrar()">R E G I S T R A R</button>
 
 
 
@@ -52,4 +56,118 @@
     </div>
 </section>
 </body>
-</html>
+</html> <script>
+
+    
+    let contador_erro
+  function cadastrar() {
+    contador_erro = 0
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var email = ipt_email.value
+    var user = ipt_username.value
+    var pass = ipt_password.value
+    var confirmation = ipt_password_confirm.value
+
+    // Verificando se há algum campo em branco
+    email_erro.innerHTML = ''
+    user_erro.innerHTML = ''
+    pass_erro.innerHTML = ''
+    confirmation_erro.innerHTML = ''
+
+    if (email == '' || user == '' || pass == '' || confirmation == '') {
+        email_erro.innerHTML = 'Nada pode estar nulo!'
+        user_erro.innerHTML = 'Nada pode estar nulo!'
+        pass_erro.innerHTML = 'Nada pode estar nulo!'
+        confirmation_erro.innerHTML = 'Nada pode estar nulo!'
+        contador_erro++
+    }
+
+    let tem_formatacao = email.includes('@') && email.includes('.com')
+    let ordem_correta = email.indexOf("@") < email.lastIndexOf('.com')
+
+    if (!tem_formatacao) {
+        email_erro.innerHTML = 'O email deve possuir @ e .com'
+        contador_erro++
+
+    } else if (!ordem_correta) {
+        email_erro.innerHTML = 'O @ deve vir antes do .com'
+        contador_erro++
+    }
+
+
+    let tem_numero = /[0-9]/.test(user)
+
+    if (tem_numero) {
+        user_erro.innerHTML = 'O usuário não pode possuir números'
+        contador_erro++
+    }
+
+    if (pass.length < 4) {
+        pass_erro.innerHTML = 'A senha deve ter pelo menos 4 caracteres'
+        contador_erro++
+
+    } else if (pass != confirmation) {
+        confirmation_erro.innerHTML = 'As senhas não coincidem'
+        contador_erro++
+
+    }
+    
+    let user_size = user.length > 2
+    
+    
+    if(!user_size){
+        user_erro.innerHTML='O nome de usuário deve ter mais que 2 letras!'
+        contador_erro++
+
+    }
+
+if(contador_erro==0){
+
+    
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+        },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: user,
+        emailServer: email,
+        senhaServer: pass,
+    }),
+})
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        
+        if (resposta.ok) {
+            
+            confirmation_erro.innerHTML =
+            "<span style='color:green;'>Cadastro realizado com sucesso! Redirecionando para tela de Login...</span>";
+            
+            setTimeout(() => {
+                window.location = "../login/login.html";
+            }, "2000");
+            
+            limparFormulario();
+            finalizarAguardar();
+        } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+    })
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+    });
+
+    return false;
+}
+}
+
+
+
+
+
+</script>

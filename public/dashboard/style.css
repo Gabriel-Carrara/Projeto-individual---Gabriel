@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'guilty';
+    src: url('./fonte/Impact\ -\ Strive.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+  /* geral */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+h1, h2, h3, .saudacao, .sidebar h2 {
+    font-family: 'Impact', sans-serif;
+    font-weight: normal;
+}
+
+  .app-container {
+    display: flex;
+    height: 100vh;
+}
+
+  /* tudo da sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #1a1a1a;
+    border-right: 3px solid #ff002b;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+  .sidebar h2 {
+    color: #ff002b;
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+}
+
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px;
+    display: block;
+    transition: 0.3s;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+  .sidebar a:hover {
+    background: #ff002b;
+}
+
+  /* conteudo da dash */
+.main-content {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+  .saudacao {
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+  /* KPIS */
+.kpi-grid {
+    display: flex;
+    gap: 20px;
+}
+
+  .kpi-card {
+    border-left: 5px solid #ff002b;
+    flex: 1;
+    background: #222222;
+    padding: 15px 20px;
+    border: 1px solid #333;
+    box-shadow: 4px 4px 0px #000;
+}
+
+  .kpi-card h3 {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+  .kpi-card p {
+    font-size: 1.6rem;
+}
+
+  /* grafico */
+.chart-container {
+    flex: 1;
+    background: #222222;
+    padding: 20px;
+    border: 1px solid #333;
+    box-shadow: 10px 10px #000;
+    display: flex;
+    flex-direction: column;
+}
+
+  .chart-wrapper {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+}

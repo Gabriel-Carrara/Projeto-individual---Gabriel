@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+</head>
+<body>
+
+
+<!-- LOGIN -->
+
+<section id="cadastro" class="cadastro-wrapper">
+    <div class="cadastro-split">
+        
+        <div class="cadastro-image-side">
+        </div>
+
+        <div class="cadastro-form-side">
+            <div class="cadastro-inputs">
+                <div class="get-out">
+                    <a style="text-decoration: none;" href="../index.html">
+                        <i class="ph ph-sign-out"></i>
+                    </a>
+                    <img src="../imgs/logo.png" alt="">
+              </div>
+           <div class="cadastro-inputs">
+            <h1>CADASTRE-SE:</h1>
+            <span>Email:</span> <br>
+            <i class="ph ph-at"></i><input id="ipt_email" type="text" placeholder="Email">
+            <br>
+            <span class="error" id="email_erro"></span> <br>
+            <span>Nome do usuário:</span> <br>
+            <i class="ph ph-user"></i><input id="ipt_username" type="text" placeholder="Username">
+            <br>
+            <span class="error" id="user_erro"></span> <br>            
+            <span>Senha:</span> <br>
+            <i class="ph ph-password"></i></i><input id="ipt_password" type="password" placeholder="Password">
+            <br>
+            <span class="error" id="pass_erro"></span> <br>            
+            <span>Confirmar senha:</span> <br>
+            <i class="ph ph-password"></i><input id="ipt_password_confirm" type="password" placeholder="Password">
+            <br>
+            <span class="error" id="confirmation_erro"></span> <br>            
+            <a href="../login/login.html">Já tem conta? Faça login</a>
+           </div>
+            <button class="btn-registrar" onclick="fieldValidation()">R E G I S T R A R</button>
+
+
+
+        </div>
+
+    </div>
+</section>
+</body>
+</html> <script>
+function fieldValidation() {
+    let email = ipt_email.value
+    let user = ipt_username.value
+    let pass = ipt_password.value
+    let confirmation = ipt_password_confirm.value
+
+    email_erro.innerHTML = ''
+    user_erro.innerHTML = ''
+    pass_erro.innerHTML = ''
+    confirmation_erro.innerHTML = ''
+
+    if (email == '' || user == '' || pass == '' || confirmation == '') {
+        email_erro.innerHTML = 'Nada pode estar nulo!'
+        user_erro.innerHTML = 'Nada pode estar nulo!'
+        pass_erro.innerHTML = 'Nada pode estar nulo!'
+        confirmation_erro.innerHTML = 'Nada pode estar nulo!'
+        return false
+    }
+
+    let tem_formatacao = email.includes('@') && email.includes('.com')
+    let ordem_correta = email.indexOf("@") < email.lastIndexOf('.com')
+
+    if (!tem_formatacao) {
+        email_erro.innerHTML = 'O email deve possuir @ e .com'
+
+    } else if (!ordem_correta) {
+        email_erro.innerHTML = 'O @ deve vir antes do .com'
+    }
+
+
+    let tem_numero = /[0-9]/.test(user)
+
+    if (tem_numero) {
+        user_erro.innerHTML = 'O usuário não pode possuir números'
+    }
+
+    if (pass.length < 4) {
+        pass_erro.innerHTML = 'A senha deve ter pelo menos 4 caracteres'
+    } else if (pass != confirmation) {
+        confirmation_erro.innerHTML = 'As senhas não coincidem'
+    }
+    
+    let user_size = user.length > 2
+    
+    
+    if(!user_size){
+        user_erro.innerHTML='O nome de usuário deve ter mais que 2 letras!'
+    }
+    
+    
+    
+    
+}
+    
+    
+    
+
+
+
+</script>
