@@ -135,7 +135,7 @@ header {
   display: grid;
   grid-template-columns: repeat(4, 80px); /* faz com que as divs não fiquem em uma linha continua, 4 numa linha e dps pula pra proxima*/
   gap: 10px;
-}
+} 
 
 .character-icons {
   width: 80px;
@@ -189,7 +189,7 @@ header {
   align-items: center;
   padding: 0 10% 0 20%;
   z-index: 2;
-  border-top: 6px solid #fff;
+  border-top: 6px solid #000000;
 }
 
 .info-box {
@@ -215,8 +215,8 @@ header {
 
 .character-grid button {
     grid-column: span 4; /* Faz o botão ocupar as 4 colunas da grade */
-    justify-self: center; /* Agora que ele tem espaço, o justify-self funciona */
-    margin-top: 10px;    /* Espaçamento para não colar nos ícones */
+    justify-self: center; 
+    margin-top: 10px; 
     padding: 10px 20px;
     cursor: pointer;
     background-color: #ff002b81;

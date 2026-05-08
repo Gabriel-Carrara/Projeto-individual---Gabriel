@@ -11,4 +11,8 @@ router.post("/cadastrar", function (req, res) {
   aquarioController.cadastrar(req, res);
 })
 
+router.put("/atualizar-personagem/:id", function(req, res) {
+  aquarioController.update_character(req, res)
+})
+
 module.exports = router;

@@ -12,18 +12,18 @@
 <header>
   <div class="header-container">
     <div class="logo">
-      <img src="./imgs/logo.png" alt="Guilty Gear Strive Logo">
+      <img src="./assets/imgs/Home-page/logo.png" alt="Guilty Gear Strive Logo">
     </div>
 
     <nav class="navbar">
-      <a href="../public/index.html">HOME</a>
-      <a href="./personagens/personagens.html">PERSONAGENS</a>
-      <a href="../public/questionario/questionario.html">QUESTIONÁRIO</a>
+      <a href="index.html">HOME</a>
+      <a href="personagens/personagens.html">PERSONAGENS</a>
+      <a href="questionario/questionario.html">QUESTIONÁRIO</a>
     </nav>
 
     <div class="button-login-cadastro">
-      <button onclick="window.location.href = '../public/cadastro/cadastro.html'" class="button-cadastro">C A D A S T R O</button>
-      <button onclick="window.location.href = '../public/login/login.html'" class="btn-login">L O G I N</button>
+      <button onclick="window.location.href = 'cadastro/cadastro.html'" class="button-cadastro">C A D A S T R O</button>
+      <button onclick="window.location.href = 'login/login.html'" class="btn-login">L O G I N</button>
     </div>
   </div>
 </header>
@@ -54,14 +54,14 @@
 
 
   <div id="img">
-  <img src="imgs/dizzy.jpg" alt="Dizzy" class="img-dizzy">
+  <img src="assets/imgs/Home-page/dizzy.jpg" alt="Dizzy" class="img-dizzy">
   </div>
 </div>
 </section>
 
 <section class="banner-container-reverso" id="porque" style="height: 30vh; padding: 100px;">
   <div class="section"> <div id="img-ky">
-      <img src="imgs/ky-kyske.jpg" alt="Ky Kyske" class="img-ky-style">
+      <img src="assets/imgs/Home-page/ky-kyske.jpg" alt="Ky Kyske" class="img-ky-style">
     </div>
 
     <div class="text-section">
@@ -118,7 +118,7 @@
         </div>
           
         <div class="disco-wrapper">
-            <img src="imgs/disco.png" id="img_disco" class="disco-girando">
+            <img src="assets/imgs/Home-page/disco.png" id="img_disco" class="disco-girando">
         </div>
         <button onclick="pularMusica()" class="btn-skip-style">SKIP >></button>
         <button onclick="mutarMusica()" id="btn_mudo" class="btn-mudo-style">MUTE</button>
@@ -212,7 +212,7 @@ function pularMusica() {
     audio_tema.src = "musicas/" + sorteio + ".mp3"; // Ele percorre o caminho e pega a musica com o sorteio
     audio_tema.play();
 
-    img_gif_personagem.src = "imgs/character-music-gifs/"+sorteio+".gif"; //msm coisa mas com o gif
+    img_gif_personagem.src = "assets/gifs/character-music-gifs/"+sorteio+".gif"; //msm coisa mas com o gif
     div_gif_wrapper.style.display = "block";
 
     img_disco.style.animationPlayState = "running";

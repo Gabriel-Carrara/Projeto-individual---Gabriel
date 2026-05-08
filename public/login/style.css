@@ -124,6 +124,7 @@ text-decoration: underline;
 }
 
 .msg_back {  
+    padding-top: 20px;
     font-size: 14px;
     color: black;
     text-decoration: none;
@@ -136,7 +137,7 @@ text-decoration: underline;
     background-color: #0d0d0d; 
     display: flex;
     overflow: hidden;
-    background: linear-gradient(to right, #74160A, transparent ), url(../imgs/fundo-login-sol.png);
+    background: linear-gradient(to right, #74160A, transparent ), url(../assets/imgs/Home-page/fundo-login-sol.png);
     background-size: cover;
 }
 
@@ -145,4 +146,9 @@ text-decoration: underline;
     height: 100%;
     object-fit: cover; 
     image-rendering: high-quality;
+}
+
+.error{
+    font-size: 14px;
+    color: rgb(222, 10, 10);
 }

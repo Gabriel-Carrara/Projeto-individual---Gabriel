@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
         <script src="../js/sessao.js"></script>
-
     </head>
     <body>
 
@@ -25,7 +24,7 @@
                     <a style="text-decoration: none;" href="../index.html">
                         <i class="ph ph-sign-out"></i>
                     </a>
-                    <img src="../imgs/logo.png" alt="">
+                    <img src="../assets/imgs/Home-page/logo.png" alt="">
               </div>
            <div class="cadastro-inputs">
             <h1>CADASTRE-SE:</h1>
@@ -58,7 +57,6 @@
 </body>
 </html> <script>
 
-    
     let contador_erro
   function cadastrar() {
     contador_erro = 0
@@ -76,7 +74,7 @@
     confirmation_erro.innerHTML = ''
 
     if (email == '' || user == '' || pass == '' || confirmation == '') {
-        email_erro.innerHTML = 'Nada pode estar nulo!'
+        email_erro.innerHTML = "Nada pode estar nulo!"
         user_erro.innerHTML = 'Nada pode estar nulo!'
         pass_erro.innerHTML = 'Nada pode estar nulo!'
         confirmation_erro.innerHTML = 'Nada pode estar nulo!'
@@ -127,45 +125,45 @@ if(contador_erro==0){
     
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
-        method: "POST",
+      method: "POST",
       headers: {
-          "Content-Type": "application/json",
-        },
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: user,
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: user,
         emailServer: email,
         senhaServer: pass,
-    }),
-})
+      }),
+    })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
-        
+
         if (resposta.ok) {
-            
-            confirmation_erro.innerHTML =
-            "<span style='color:green;'>Cadastro realizado com sucesso! Redirecionando para tela de Login...</span>";
-            
-            setTimeout(() => {
-                window.location = "../login/login.html";
-            }, "2000");
-            
-            limparFormulario();
-            finalizarAguardar();
+          // cardErro.style.display = "block";
+
+          confirmation_erro.innerHTML =
+            "<span style='color: green;'>Cadastro realizado com sucesso! Redirecionando para tela de Login...</span>";
+
+          setTimeout(() => {
+            window.location = "../login/login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
         } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
+          throw "Houve um erro ao tentar realizar o cadastro!";
         }
-    })
-    .catch(function (resposta) {
+      })
+      .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
-    });
+      });
 
     return false;
-}
-}
-
+  }
+  }
 
 
 

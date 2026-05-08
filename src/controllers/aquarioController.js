@@ -1,7 +1,7 @@
 var aquarioModel = require("../models/aquarioModel");
 
 function buscarAquariosPorEmpresa(req, res) {
-  var idUsuario = req.params.idUsuario;
+  var idUsuario = req.params.EmpresaId;
 
   aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
     if (resultado.length > 0) {
@@ -19,7 +19,7 @@ function buscarAquariosPorEmpresa(req, res) {
 
 function cadastrar(req, res) {
   var descricao = req.body.descricao;
-  var idUsuario = req.body.idUsuario;
+  var idUsuario = req.body.id;
 
   if (descricao == undefined) {
     res.status(400).send("descricao está undefined!");
@@ -43,7 +43,35 @@ function cadastrar(req, res) {
   }
 }
 
-module.exports = {
-  buscarAquariosPorEmpresa,
-  cadastrar
+
+
+
+function update_character(req, res) {
+  var idUsuario = req.body.id;
+  
+ if (idUsuario == undefined) {
+    res.status(400).send("idUsuario está undefined!");
+  } else {
+
+    
+    aquarioModel.update_character(idUsuario)
+    .then((resultado) => {
+        res.status(201).json(resultado);
+      }
+    ).catch((erro) => {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
 }
+
+        
+        module.exports = {
+          buscarAquariosPorEmpresa,
+          cadastrar,
+          update_character
+        }

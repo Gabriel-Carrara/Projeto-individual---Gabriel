@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login - guilty gear</title>
         <link rel="stylesheet" href="style.css">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-</head>
+    <script src="../js/sessao.js"></script>
+    </head>
 <body>
 
 
@@ -23,19 +24,23 @@
                         <i class="ph ph-sign-out"></i>
                     </a>
                 </div>
-                    <img src="../imgs/logo.png" alt="">
+                    <img src="../assets/imgs/Home-page/logo.png" alt="">
               </div>
                 <h1>LOGIN:</h1>
                 <span>Email:</span> <br>
                     <i class="ph ph-at"></i><input id="ipt_email" type="text" placeholder="Email">
+                     <br>
+                    <span class="error" id="email_erro"></span> <br>            
+
                 <br>
                 <span>Senha:</span> <br>
                 <i class="ph ph-password"></i><input id="ipt_password" type="password" placeholder="Password">
                 <br>
+                <span class="error" id="pass_erro"></span> <br>            
                 <a class="msg_back" href="../cadastro/cadastro.html">Não tem conta? Cadastre-se</a>
             </div>
             
-            <button class="btn-login-style" onclick="verificar()">E N T R A R</button>
+            <button class="btn-login-style" onclick="entrar()">E N T R A R</button>
         </div>
 
         <div class="login-image-side">
@@ -44,18 +49,99 @@
     </div>
 </section>
 </body>
-</html> <script>
-function verificar(){
-    const userEmail = (ipt_email.value).trim()
-    const userPassword = ipt_password.value
-    // const 
+</html> 
+<script>
 
-}
+let contador_erro
+    function entrar() {
+        // aguardar();
 
-
-
-
+        var email = ipt_email.value;
+        var pass = ipt_password.value;
 
 
+    contador_erro = 0
+
+    var email = ipt_email.value
+    var pass = ipt_password.value
+
+
+    email_erro.innerHTML = ''
+    pass_erro.innerHTML = ''
+
+    if (email == '' || pass == '') {
+        email_erro.innerHTML = 'Nada pode estar nulo!'
+        pass_erro.innerHTML = 'Nada pode estar nulo!'
+        contador_erro++
+    }
+
+    let tem_formatacao = email.includes('@') && email.includes('.com')
+    let ordem_correta = email.indexOf("@") < email.lastIndexOf('.com')
+
+    if (!tem_formatacao) {
+        email_erro.innerHTML = 'O email deve possuir @ e .com'
+        contador_erro++
+
+    } else if (!ordem_correta) {
+        email_erro.innerHTML = 'O @ deve vir antes do .com'
+        contador_erro++
+    }
+
+
+if(contador_erro==0){
+
+
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", pass);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: pass
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "/dashboard/dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }}
 
 </script>
+
