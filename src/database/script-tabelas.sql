@@ -6,48 +6,57 @@
 comandos para mysql server
 */
 
-CREATE DATABASE guilty_gear;
+	CREATE DATABASE guilty_gear;
 
-USE guilty_gear;
+	USE guilty_gear;
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	FK_personagem INT default(21),
-	tentativas_quiz INT,
-	FOREIGN KEY (FK_personagem) REFERENCES personagem(id)
-);
+	CREATE TABLE usuario (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+		nome VARCHAR(50),
+		email VARCHAR(50),
+		senha VARCHAR(50),
+		FK_personagem INT default(21),
+		tentativas_quiz INT,
+		FOREIGN KEY (FK_personagem) REFERENCES personagem(id)
+	);
 
-ALTER TABLE usuario ADD CONSTRAINT email_unique UNIQUE (email);
+	ALTER TABLE usuario ADD CONSTRAINT email_unique UNIQUE (email);
 
 
-CREATE TABLE personagem (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	contador INT
-);
+	CREATE TABLE personagem (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+		nome VARCHAR(50),
+		contador INT
+	);
 
-insert into personagem (nome, contador) values
-('Sol Badguy', 0),
-('Ky Kyske', 0),
-('Baiken', 0),
-('Faust', 0),
-('Potemkin', 0),
-('Happy Chaos', 0),
-('Leo Whitefang', 0),
-('Zato=1', 0),
-('Millia', 0),
-('Ramlethal', 0),
-('Axl', 0),
-('I-no', 0),
-('May', 0),
-('Chipp Zanuff', 0),
-('Giovanna', 0),
-('Slayer', 0),
-('Jack-O', 0),
-('Testament', 0),
-('Nagoriyuki', 0),
-('Dizzy', 0),
-('Sem personagem!', 0);
+	insert into personagem (nome, contador) values
+	('Sol Badguy', 0),
+	('Ky Kyske', 0),
+	('Baiken', 0),
+	('Faust', 0),
+	('Potemkin', 0),
+	('Happy Chaos', 0),
+	('Leo Whitefang', 0),
+	('Zato=1', 0),
+	('Millia', 0),
+	('Ramlethal', 0),
+	('Axl', 0),
+	('I-no', 0),
+	('May', 0),
+	('Chipp Zanuff', 0),
+	('Giovanna', 0),
+	('Slayer', 0),
+	('Jack-O', 0),
+	('Testament', 0),
+	('Nagoriyuki', 0),
+	('Dizzy', 0);
+
+	CREATE VIEW vw_dados_dash AS
+		SELECT 
+			u.id AS idUsuario,
+			p_user.nome AS personagem_do_usuario, -- nome do personagem que o user escolheu
+			p_rank.nome AS nome_personagem,        -- nome para a lista do gráfico
+			p_rank.contador AS votos_personagem   -- votos para a lista do gráfico
+		FROM usuario u
+		LEFT JOIN personagem p_user ON u.FK_personagem = p_user.id
+		JOIN personagem p_rank;

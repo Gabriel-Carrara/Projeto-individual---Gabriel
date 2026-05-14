@@ -108,6 +108,8 @@ if(contador_erro==0){
 
             if (resposta.ok) {
                 console.log(resposta);
+            pass_erro.innerHTML =
+                "<span style='color: green;'>Cadastro realizado com sucesso! Redirecionando para Dashboard...</span>";
 
                 resposta.json().then(json => {
                     console.log(json);
@@ -115,7 +117,8 @@ if(contador_erro==0){
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-
+                    sessionStorage.ID_PERSONAGEM = json.personagem
+                    
                     setTimeout(function () {
                         window.location = "/dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
@@ -124,7 +127,7 @@ if(contador_erro==0){
 
             } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+                pass_erro.innerHTML =("Email ou senha incorretos!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
@@ -133,7 +136,7 @@ if(contador_erro==0){
             }
 
         }).catch(function (erro) {
-            console.log(erro);
+                        pass_erro.innerHTML =erro;
         })
 
         return false;

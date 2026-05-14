@@ -28,6 +28,7 @@ function autenticar(req, res) {
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
+                                        personagem: resultadoAutenticar[0].personagem
                                     });
                                 } else {
                                     res.status(204).json({ aquarios: [] });
@@ -90,7 +91,17 @@ function cadastrar(req, res) {
     }
 }
 
+function salvarPersonagem(req, res) {
+    var idUsuario = req.body.idUsuarioServer;
+    var idPersonagem = req.body.idPersonagemServer;
+
+    usuarioModel.salvarPersonagem(idUsuario, idPersonagem)
+        .then(resultado => res.status(200).json(resultado))
+        .catch(erro => res.status(500).json(erro.sqlMessage));
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    salvarPersonagem
 }

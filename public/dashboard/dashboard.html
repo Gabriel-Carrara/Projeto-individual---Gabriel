@@ -1,258 +1,241 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Strive Stats | Dashboard</title>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
-<body onload="hourChange()">
-
-   
+<body onload="hourChange(), obterDadosGrafico()">
 
     <div class="app-container">
-
         <aside class="sidebar">
-
             <h2>STRIVE DASH</h2>
-
             <nav>
-
                 <a href="dashboard.html">DASHBOARD</a>
-
                 <a href="../personagens/personagens.html">PERSONAGENS</a>
+                <a href="../questionario/questionario.html">QUESTIONÁRIO</a>
 
                 <a href="../index.html">SAIR</a>
-
             </nav>
-
         </aside>
 
-
-
         <main class="main-content">
+                <span class="saudacao">
+                    <span id="greetings"></span> <span id="b_usuario">usuário</span>!
+                </span>
 
-            <header>
-
-              <span class="saudacao">
-
-                  <span id="greetings"></span> <span id="b_usuario">usuário</span>!
-
-              </span>  
-
-            </header>
-
-           
 
             <div class="kpi-grid">
-
                 <div class="kpi-card">
-
-                    <h3>PERSONAGEM ATUAL</h3>
-
-                    <p id="b_personagem">SOL BADGUY</p>
-
+                        <h3>PERSONAGEM ATUAL</h3>
+                        <p id="b_personagem"></p>
                 </div>
-
+                <div>
+                        <img class="img" id="img-personagem" src="" alt="">
+                </div>
                 <div class="kpi-card">
-
                     <h3>VOTOS TOTAIS</h3>
-
-                    <p id="b_tentativas">247</p>
-
+                    <p id="b_tentativas">0</p>
                 </div>
-
             </div>
-
-
-
             <div class="chart-container">
-
                 <h2>POPULARIDADE DOS PERSONAGENS</h2>
-
                 <div class="chart-wrapper">
-
                     <canvas id="graficoPersonagens"></canvas>
-
                 </div>
-
             </div>
-
         </main>
-
     </div>
+<script>
 
 
+            var caminhosFotos = [
+            "../assets/imgs/character-icons/sol-badguy.png", "../assets/imgs/character-icons/ky-kiske.png", "../assets/imgs/character-icons/may.png", "../assets/imgs/character-icons/pottemkin.png", 
+            "../assets/imgs/character-icons/chipp.png", "../assets/imgs/character-icons/ramlethal.png", "../assets/imgs/character-icons/rxx82us-1-306x305.png", "../assets/imgs/character-icons/zato-1.png", 
+            "../assets/imgs/character-icons/happy-chaos.png", "../assets/imgs/character-icons/nagoriyuki.png", "../assets/imgs/character-icons/jko.png", "../assets/imgs/character-icons/baiken.png", 
+            "../assets/imgs/character-icons/faust.png", "../assets/imgs/character-icons/Leo.png", "../assets/imgs/character-icons/millia.png", "../assets/imgs/character-icons/axl.png", 
+            "../assets/imgs/character-icons/giovanna.png", "../assets/imgs/character-icons/slayer.png", "../assets/imgs/character-icons/icon-1ubduiak.png", "../assets/imgs/character-icons/dizzy.png"
+        ];
 
-    <script>
-
-        
-
-        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-        b_personagem.innerHTML = sessionStorage.NOME_PERSONAGEM;
-
-        b_tentativas.innerHTML = sessionStorage.QUANTIDADE_TENTATIVAS;
-
-        let b_personagem = Document.getElementById('b_personagem')
+    
 
 
+    // Exibe o nome do usuário assim que carrega
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    if (sessionStorage.ID_USUARIO == undefined) {
+    alert("Faça o login para acessar o questionário!!");
+    window.location = "../login/login.html";
+    }
 
-        function quiz_character_update() {
+    
+    let proximaAtualizacao;
 
-        alterarTitulo(idAquario)
+    function hourChange() {
+        let horas = new Date().getHours();
+        let greetings = document.getElementById("greetings");
+        if (horas >= 18) greetings.innerHTML = 'Boa noite,';
+        else if (horas >= 12) greetings.innerHTML = 'Boa tarde,';
+        else greetings.innerHTML = 'Bom dia,';
+}
+// O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+    function obterDadosGrafico() {
+        const idUsuario = sessionStorage.ID_USUARIO;
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
+        fetch(`/medidas/dashboard/${idUsuario}`, { cache: 'no-store' })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        
+                            // Atualizando KPIs com os dados do banco
+                            document.getElementById("b_personagem").innerHTML = resposta[0].personagem_do_usuario || "Nenhum";
+                        
+                            
+                        // Calculando total de votos para a KPI
+                        let totalVotos = 0;
+                        for (let i = 0; i < resposta.length; i++) {
+                            totalVotos += resposta[i].votos_personagem;
+                        }
+                        document.getElementById("b_tentativas").innerHTML = totalVotos;
 
-                    plotarGrafico(resposta, idAquario);
+                        let indice = resposta[0].FK_personagem -1
+                        document.getElementById("img-personagem").src = caminhosFotos[indice];
 
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
+                        plotarGrafico(resposta);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
 
-
-    
-    
-            const personagens = [];
-    
-            
-    
-            const votos = [];
-
-
-
-
-
-
-        const ctx = document.getElementById('graficoPersonagens').getContext('2d');
-
-
-
-
-
-
-
-
-       
-
-
-
-        new Chart(ctx, {
-
-            type: 'bar',
-
-            data: {
-
-                labels: personagens,
-
-                datasets: [{
-
-                    label: 'Votos',
-
-                    data: votos,
-
-                    backgroundColor: 'rgba(255, 0, 43, 0.7)',
-
-                    borderColor: '#ff002b',
-
-                    borderWidth: 2
-
-                }]
-
-            },
-
-            options: {
-
-                responsive: true,
-
-                maintainAspectRatio: false,
-
-                scales: {
-
-                    y: {
-
-                        beginAtZero: true,
-
-                        max: 30,
-
-                        grid: { color: '#333' },
-
-                        ticks: { color: '#fff', font: { family: 'Impact' } }
-
-                    },
-
-                    x: {
-
-                        grid: { display: false },
-
-                        ticks: {
-
-                            color: '#fff',
-
-                            font: { family: 'Impact', size: 12},
-
-                            maxRotation: 0,
-
-                            minRotation: 0
-
-                        }
-
-                    }
-
-                },
-
-
-
-            }
-
-        });
-
-
-
- function hourChange() {
-
-            let horas = new Date().getHours()
-
-            if(horas>=18){
-
-                greetings.innerHTML='Boa noite,'
-
-            } else if (horas>=12){
-
-                greetings.innerHTML='Boa tarde,'
-
-            } else {
-
-                greetings.innerHTML='Bom dia,'
-
-            }
-
-
-
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Votos Totais',
+                data: [],
+                backgroundColor: 'rgba(255, 0, 43, 0.7)',
+                borderColor: '#ff002b',
+                borderWidth: 2
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.nome_personagem);
+            dados.datasets[0].data.push(registro.votos_personagem);
         }
 
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#fff', stepSize: 1 } },
+                    x: { ticks: { color: '#fff' } }
+                }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('graficoPersonagens'),
+            config
+        );
+
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        setTimeout(() => atualizarGrafico(dados, myChart), 10000);
+    }
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+    function atualizarGrafico(dados, myChart) {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/medidas/dashboard/${idUsuario}`, { cache: 'no-store' })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados atuais do gráfico:`);
+                        console.log(dados);
+
+                            // Atualizando KPIs com os dados do banco
+                            document.getElementById("b_personagem").innerHTML = resposta[0].personagem_do_usuario || "Nenhum";
+                        
+                        let totalVotos = 0; 
+                        for (let i = 0; i < novoRegistro.length; i++) {
+                            totalVotos += novoRegistro[i].votos_personagem;
+                        }
+                        document.getElementById("b_tentativas").innerHTML = totalVotos;
+
+                        // tirando e colocando valores no gráfico
+                        dados.labels = []; 
+                        dados.datasets[0].data = []; 
+
+                        for (i = 0; i < novoRegistro.length; i++) {
+                            var registro = novoRegistro[i];
+                            dados.labels.push(registro.nome_personagem);
+                            dados.datasets[0].data.push(registro.votos_personagem);
+                        }
+
+                        myChart.update();
+
+                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 10000);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 10000);
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
 </script>

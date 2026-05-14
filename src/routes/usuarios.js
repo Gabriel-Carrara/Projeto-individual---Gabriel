@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.put("/salvarPersonagem", function (req, res) {
+    usuarioController.salvarPersonagem(req, res);
+});
+
 module.exports = router;
