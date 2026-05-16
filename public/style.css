@@ -29,31 +29,33 @@ header {
     width: 100%; 
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 15px 50px;
+    padding: 1rem 4vw;
+    box-sizing: border-box;
 }
 
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 75rem;
     margin: 0 auto;
+    width: 100%;
 }
 
 .logo img {
-    height: 60px;
+    height: 3.75rem;
     display: block;
 }
 
 .navbar {
     display: flex;
-    gap: 40px;
+    gap: 2.5rem;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 0.9rem;
     transition: color 0.3s;
 }
 
@@ -64,18 +66,18 @@ header {
 /* BOTÕES DE LOGIN E CADASTRO */
 .button-login-cadastro {
     display: flex;
-    gap: 15px;
+    gap: 1rem;
     align-items: center;
 }
 
 .button-cadastro, .btn-login {
     font-family: Impact, sans-serif;
-    padding: 8px 25px;
-    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1.25rem;
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 .button-cadastro {
@@ -113,26 +115,27 @@ header {
 }
 
 .hero-content {
-    padding-left: 80px;
+    padding-left: 6vw;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    box-sizing: border-box;
 }
 
 .hero-container h1 {
     font-family: 'guilty', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 120px;
+    font-size: 6.5vw;
     color: #1a1a1a;
     text-transform: uppercase;
-    margin-bottom: 20px;
-    
+    margin-bottom: 1.25rem;
+    line-height: 1;
 }
 
 .hero-container p {
     color: #ffffff;
-    font-size: 18px;
-    max-width:700px;
-    margin-bottom: 30px;
+    font-size: 1.15rem;
+    max-width: 44rem;
+    margin-bottom: 2rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -142,9 +145,9 @@ header {
     background-color: transparent;
     color: #1a1a1a;
     border: 2px solid #1a1a1a;
-    padding: 12px 45px;
-    border-radius: 30px;
-    font-size: 16px;
+    padding: 0.75rem 2.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -161,7 +164,10 @@ header {
 display: flex;
 align-items: center;
 justify-content: space-between;
-gap: 50px;
+gap: 4vw;
+width: 100%;
+max-width: 75rem;
+margin: 0 auto;
 }
 
 .banner-container::after {
@@ -176,25 +182,36 @@ gap: 50px;
 
 .banner-container {
     background-color: #B05D60;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    /* Estilos movidos do inline: */
+    min-height: 70vh; 
+    padding: 5vh 6vw;
 }
 
 .text-section h1 {
     width: 100%;      
     text-align: center; 
     display: block;   
-    font-size: 100px;   
-    margin-bottom: 20px;
+    font-size: 5.5vw;   
+    margin-bottom: 1.25rem;
 }
+
+.titulo-origem {
+    /* Estilo movido do inline: */
+    padding-bottom: 2.5rem;
+}
+
 .banner-container .text-section {
     flex: 1;
-    padding-top: 30px;
+    padding-top: 2rem;
     max-width: 50%;
     text-align: justify;
-    
 }
 .text-section p {
     color: white;
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
 .img {
@@ -205,13 +222,13 @@ gap: 50px;
 
 .img-dizzy {
     width: 100%;
-    max-width: 600px;
+    max-width: 38vw;
     height: auto;
-    border-radius: 10px;
+    border-radius: 0.6rem;
 }
 
 .banner-container .tecnico {
-    padding-left: 40px;
+    padding-left: 2.5rem;
 }
 
 .img{
@@ -227,16 +244,21 @@ gap: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 40px;
+    gap: 4vw;
     width: 100%;
 }
 
 .banner-container-reverso {
     background-color: #B05D60;
-    padding: 60px 100px;
-    min-height: 80vh;
-    backdrop-filter: blur(Xpx)
+    backdrop-filter: blur(Xpx);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    /* Estilos movidos do inline: */
+    min-height: 50vh; 
+    padding: 5vh 6vw;
 }
+
 .banner-container-reverso .text-section{
 text-align: justify;
 
@@ -250,15 +272,14 @@ text-align: justify;
     flex: 1;
     display: flex;
     justify-content: center;
-    padding-top: 60px;
 }
 
 .img-ky-style {
     width: 100%;
-    max-width: 800px;
+    max-width: 42vw;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.4);
     display: block;
 }
 
@@ -272,17 +293,17 @@ text-align: justify;
 .pills-container {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 1rem;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .pill {
     background-color: #D9D9D9;
     color: #1a1a1a;
-    padding: 15px;
-    border-radius: 30px;
-    font-size: 20px;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
     text-align: center;
     flex: 1; 
 }
@@ -295,7 +316,6 @@ text-align: justify;
     height: 100vh;
     background-image: url(assets/imgs/Home-page/fundo-quiz.png);
     background-size: cover;
-    /* background-position: center; */
     position: relative;
     display: flex;
     align-items: center;
@@ -321,20 +341,19 @@ text-align: justify;
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* padding: 20px; */
 }
 
 .quiz-overlay h1 {
-    font-size: 80px;
+    font-size: 4.5vw;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 0.6rem;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
 }
 
 .quiz-overlay p {
     color: white;
-    font-size: 22px;
-    margin-bottom: 30px;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
     font-family: Impact, sans-serif;
 }
 
@@ -342,10 +361,10 @@ text-align: justify;
     background-color: transparent;
     color: black;
     border: 3px solid;
-    padding: 10px 40px;
-    border-radius: 50px;
+    padding: 0.6rem 2.5rem;
+    border-radius: 3rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 20px;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: 0.3s;
     border-color: black;
@@ -361,7 +380,8 @@ text-align: justify;
 .footer {
     background-color: black;
     color: white;
-    padding: 40px 100px 20px 100px;
+    padding: 2.5rem 5vw 1.25rem 5vw;
+    box-sizing: border-box;
 }
 
 .footer-content {
@@ -369,25 +389,27 @@ text-align: justify;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #333;
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
+    max-width: 75rem;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .footer-text p{
-    margin: 5px 0;
-    font-size: 14px;
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
     letter-spacing: 1px;
 }
 
 .footer-divisor {
-    height: 80px;
+    height: 5rem;
     width: 1px;
     background-color: white;
-    margin: 0 50px;
+    margin: 0 3rem;
 }
 
 .footer-logo i{
-font-size: 60px;
-margin-left: 200px;
+font-size: 3.75rem;
 color: white;
 }
 .footer-logo a{
@@ -398,8 +420,8 @@ color: white;
 }
 .copyright {
     text-align: center;
-    font-size: 12px;
-    margin-top: 20px;
+    font-size: 0.75rem;
+    margin-top: 1.25rem;
     color: #888;
 }
 
@@ -408,9 +430,10 @@ color: white;
 
 .player-container {
     position: fixed;
-    bottom: 10px;
-    width: 320px;
-    height: 100px;
+    bottom: 1rem;
+    /* left: 0rem; */
+    width: 20rem;
+    height: 6.25rem;
     background-image: url('assets/imgs/Home-page/music-player.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -420,22 +443,22 @@ color: white;
 }
 
 .player-content{
-    padding-left: 5px;
-    width: 200px;
+    padding-left: 0.3rem;
+    width: 12.5rem;
 }
 
 .disco-wrapper img{
     position: absolute;
-    right: 10px;
-    top: 12px;
+    right: 0.6rem;
+    top: 0.75rem;
 }
 
 .gif-wrapper{
     position: absolute;
-    top: -90px;
-    left: 155px;
-    width: 105px;
-    height: 105px;
+    top: -5.6rem;
+    left: 9.7rem;
+    width: 6.5rem;
+    height: 6.5rem;
     z-index: 9998;
     display: none;
     overflow: hidden;
@@ -452,8 +475,8 @@ color: white;
 
 
 .disco-girando {
-    width: 75px;
-    height: 75px;
+    width: 4.7rem;
+    height: 4.7rem;
     border-radius: 50%;
     animation: girar 3s linear infinite;
 }
@@ -469,31 +492,31 @@ color: white;
 
 .btn-skip-style {
     position: absolute;
-    top: -30px; 
-    left: 10px;
+    top: -2rem; 
+    left: 0.6rem;
     background-color: #ff002b;
     color: white;
     border: none;
-    padding: 5px 15px;
+    padding: 0.3rem 1rem;
     border-radius: 5px;
     font-family: Impact, sans-serif;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 0.65rem;
     z-index: 10000;
 }
 
 .btn-mudo-style {
     position: absolute;
-    top: -30px; 
-    left: 100px; 
+    top: -2rem; 
+    left: 6.2rem; 
     background-color: #333;
     color: white;
     border: none;
-    padding: 5px 15px;
+    padding: 0.3rem 1rem;
     border-radius: 5px;
     font-family: Impact, sans-serif;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 0.65rem;
     z-index: 10000;
 }
 
@@ -509,4 +532,8 @@ color: white;
 
 body::-webkit-scrollbar{
     display: none;
+}
+
+.hidden { 
+        display: none; 
 }

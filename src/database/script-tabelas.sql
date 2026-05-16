@@ -13,14 +13,12 @@ comandos para mysql server
 	CREATE TABLE usuario (
 		id INT PRIMARY KEY AUTO_INCREMENT,
 		nome VARCHAR(50),
-		email VARCHAR(50),
+		email VARCHAR(50) UNIQUE,
 		senha VARCHAR(50),
 		FK_personagem INT default(21),
 		tentativas_quiz INT,
 		FOREIGN KEY (FK_personagem) REFERENCES personagem(id)
 	);
-
-	ALTER TABLE usuario ADD CONSTRAINT email_unique UNIQUE (email);
 
 
 	CREATE TABLE personagem (
@@ -56,7 +54,8 @@ comandos para mysql server
 			u.id AS idUsuario,
 			p_user.nome AS personagem_do_usuario, -- nome do personagem que o user escolheu
 			p_rank.nome AS nome_personagem,        -- nome para a lista do gráfico
-			p_rank.contador AS votos_personagem   -- votos para a lista do gráfico
+			p_rank.contador AS votos_personagem,   -- votos para a lista do gráfico
+			u.FK_PERSONAGEM
 		FROM usuario u
 		LEFT JOIN personagem p_user ON u.FK_personagem = p_user.id
 		JOIN personagem p_rank;

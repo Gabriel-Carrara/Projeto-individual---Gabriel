@@ -43,7 +43,8 @@ h1 {
 
 i{
     color: #0d0d0d;
-    font-size: 30px;
+    font-size: 25px;
+    padding-top: 10px;
     transition: 0.3s;
 }
 .get-out i:hover{
@@ -103,34 +104,34 @@ i{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 100px;
-    font-size: 20px;
-    padding-top: 70px;
+    padding: 70px;
+    font-size: 15px;
 }
 
 
 .cadastro-form-side .cadastro-inputs h1{
     display: flex;
     justify-self: center;
-    font-size: 60px;
-    margin-bottom: 30px;
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 .cadastro-inputs{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    justify-items: center;
 }
 .cadastro-form-side .cadastro-inputs input{
-    width: 400px;
+    width: 300px;
     /* margin-top: 10px; */
     /* margin-bottom: 10px; */
     margin-left: 10px;
-    padding: 15px;
+    padding: 10px;
     border-radius: 8px;
     background-color: #eee;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .cadastro-inputs a {  
-    font-size: 14px;
+    font-size: 13px;
     color: black;
     text-decoration: none;
 }
@@ -143,11 +144,12 @@ i{
 }
 
 .btn-registrar {
+    display: flex;
     padding-top: 10px;
     background-color: transparent;
     color: black;
     border: 4px solid black;
-    padding: 12px 45px;
+    padding: 5px 30px;
     border-radius: 30px;
     font-size: 16px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

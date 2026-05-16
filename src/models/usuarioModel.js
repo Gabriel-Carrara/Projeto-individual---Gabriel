@@ -24,19 +24,19 @@ function cadastrar(nome, email, senha) {
 
 
 function salvarPersonagem(idUsuario, idPersonagem) {
-    // 1. atualiza o FK do personagem
-    // 2. aumenta o tentativas_quiz do usuario 
-    // 3. aumenta também o contador do personagem no sql2
-    var sql = `
+    console.log("MODEL: Salvando personagem para o usuário:", idUsuario, "Personagem ID:", idPersonagem);
+    
+    var instrucaoSql1 = `
         UPDATE usuario SET FK_personagem = ${idPersonagem}, 
         tentativas_quiz = IFNULL(tentativas_quiz, 0) + 1 
         WHERE id = ${idUsuario};
     `;
     
-    var sql2 = `UPDATE personagem SET contador = contador + 1 WHERE id = ${idPersonagem};`;
+    var instrucaoSql2 = `UPDATE personagem SET contador = contador + 1 WHERE id = ${idPersonagem};`;
     
-    database.executar(sql2);
-    return database.executar(sql);
+    return database.executar(instrucaoSql1).then(() => {
+        return database.executar(instrucaoSql2);
+    });
 }
 module.exports = {
     autenticar,

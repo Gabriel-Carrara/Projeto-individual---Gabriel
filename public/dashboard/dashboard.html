@@ -35,8 +35,8 @@
                         <p id="b_personagem"></p>
                 </div>
                 <div>
-                        <img class="img" id="img-personagem" src="" alt="">
-                </div>
+                        <img class="img" id="b_icone" src="" alt="">
+                </div> 
                 <div class="kpi-card">
                     <h3>VOTOS TOTAIS</h3>
                     <p id="b_tentativas">0</p>
@@ -53,19 +53,31 @@
 <script>
 
 
-            var caminhosFotos = [
-            "../assets/imgs/character-icons/sol-badguy.png", "../assets/imgs/character-icons/ky-kiske.png", "../assets/imgs/character-icons/may.png", "../assets/imgs/character-icons/pottemkin.png", 
-            "../assets/imgs/character-icons/chipp.png", "../assets/imgs/character-icons/ramlethal.png", "../assets/imgs/character-icons/rxx82us-1-306x305.png", "../assets/imgs/character-icons/zato-1.png", 
-            "../assets/imgs/character-icons/happy-chaos.png", "../assets/imgs/character-icons/nagoriyuki.png", "../assets/imgs/character-icons/jko.png", "../assets/imgs/character-icons/baiken.png", 
-            "../assets/imgs/character-icons/faust.png", "../assets/imgs/character-icons/Leo.png", "../assets/imgs/character-icons/millia.png", "../assets/imgs/character-icons/axl.png", 
-            "../assets/imgs/character-icons/giovanna.png", "../assets/imgs/character-icons/slayer.png", "../assets/imgs/character-icons/icon-1ubduiak.png", "../assets/imgs/character-icons/dizzy.png"
+        var caminhosFotos = [
+            "../assets/imgs/character-icons/sol-badguy.png",     // 1. Sol
+            "../assets/imgs/character-icons/ky-kiske.png",       // 2. Ky
+            "../assets/imgs/character-icons/baiken.png",         // 3. Baiken
+            "../assets/imgs/character-icons/faust.png",          // 4. Faust
+            "../assets/imgs/character-icons/pottemkin.png",      // 5. Potemkin
+            "../assets/imgs/character-icons/happy-chaos.png",    // 6. Chaos
+            "../assets/imgs/character-icons/Leo.png",            // 7. Leo
+            "../assets/imgs/character-icons/zato-1.png",         // 8. Zato
+            "../assets/imgs/character-icons/millia.png",         // 9. Millia
+            "../assets/imgs/character-icons/ramlethal.png",      // 10. Ramlethal
+            "../assets/imgs/character-icons/axl.png",            // 11. Axl
+            "../assets/imgs/character-icons/rxx82us-1-306x305.png", // 12. I-no
+            "../assets/imgs/character-icons/may.png",            // 13. May
+            "../assets/imgs/character-icons/chipp.png",          // 14. Chipp
+            "../assets/imgs/character-icons/giovanna.png",       // 15. Giovanna
+            "../assets/imgs/character-icons/slayer.png",         // 16. Slayer
+            "../assets/imgs/character-icons/jko.png",            // 17. Jack-O
+            "../assets/imgs/character-icons/icon-1ubduiak.png",   // 18. Testament
+            "../assets/imgs/character-icons/nagoriyuki.png",     // 19. Nagoriyuki
+            "../assets/imgs/character-icons/dizzy.png"           // 20. Dizzy
         ];
 
-    
-
-
-    // Exibe o nome do usuário assim que carrega
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        // Exibe o nome do usuário assim que carrega
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     if (sessionStorage.ID_USUARIO == undefined) {
     alert("Faça o login para acessar o questionário!!");
     window.location = "../login/login.html";
@@ -90,6 +102,10 @@
     // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
     // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
     function obterDadosGrafico() {
+                
+        let indice=sessionStorage.FK_PERSONAGEM - 1
+        document.getElementById("b_icone").src = caminhosFotos[indice];
+        
         const idUsuario = sessionStorage.ID_USUARIO;
 
         if (proximaAtualizacao != undefined) {
@@ -113,9 +129,6 @@
                         }
                         document.getElementById("b_tentativas").innerHTML = totalVotos;
 
-                        let indice = resposta[0].FK_personagem -1
-                        document.getElementById("img-personagem").src = caminhosFotos[indice];
-
                         plotarGrafico(resposta);
                     });
                 } else {
@@ -135,7 +148,7 @@
 
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
-
+        
         // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
@@ -195,6 +208,10 @@
     // buscando a última medida inserida em tabela contendo as capturas, 
     function atualizarGrafico(dados, myChart) {
         const idUsuario = sessionStorage.ID_USUARIO;
+        
+        let indice=sessionStorage.FK_PERSONAGEM-1
+        document.getElementById("b_icone").src = caminhosFotos[indice];
+        
 
         fetch(`/medidas/dashboard/${idUsuario}`, { cache: 'no-store' })
             .then(function (response) {
@@ -206,13 +223,18 @@
                         console.log(dados);
 
                             // Atualizando KPIs com os dados do banco
-                            document.getElementById("b_personagem").innerHTML = resposta[0].personagem_do_usuario || "Nenhum";
+                            // CORREÇÃO: Alterado de "resposta" para "novoRegistro" para evitar o erro de variável não definida
+                            document.getElementById("b_personagem").innerHTML = novoRegistro[0].personagem_do_usuario || "Nenhum";
                         
                         let totalVotos = 0; 
                         for (let i = 0; i < novoRegistro.length; i++) {
                             totalVotos += novoRegistro[i].votos_personagem;
                         }
                         document.getElementById("b_tentativas").innerHTML = totalVotos;
+
+                        // CORREÇÃO: Adicionada a atualização do ícone do personagem também no momento da atualização em tempo real
+                        let indice = novoRegistro[0].FK_personagem - 1;
+                        document.getElementById("img-personagem").src = caminhosFotos[indice];
 
                         // tirando e colocando valores no gráfico
                         dados.labels = []; 

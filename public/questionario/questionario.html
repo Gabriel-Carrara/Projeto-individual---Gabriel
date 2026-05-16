@@ -51,15 +51,34 @@
     </div>
 
     <script>
-        // vetores para armazenar os dados
-        var nomes = ["Sol BadGuy", "Ky Kiske", "May", "Potemkin", "Chipp Zanuff", "Ramlethal", "I-no", "Zato-1", "Happy Chaos", "Nagoriyuki", "Jack-O", "Baiken", "Faust", "Leo Whitefang", "Millia Rage", "Axl Low", "Giovanna", "Slayer", "Testament", "Dizzy"];
-        // vetor pra armazenar as imagens
+        var nomes = [
+            "Sol BadGuy", "Ky Kiske", "Baiken", "Faust", "Potemkin", 
+            "Happy Chaos", "Leo Whitefang", "Zato-1", "Millia Rage", "Ramlethal", 
+            "Axl Low", "I-no", "May", "Chipp Zanuff", "Giovanna", 
+            "Slayer", "Jack-O", "Testament", "Nagoriyuki", "Dizzy"
+        ];
+
         var caminhosFotos = [
-            "../assets/imgs/character-icons/sol-badguy.png", "../assets/imgs/character-icons/ky-kiske.png", "../assets/imgs/character-icons/may.png", "../assets/imgs/character-icons/pottemkin.png", 
-            "../assets/imgs/character-icons/chipp.png", "../assets/imgs/character-icons/ramlethal.png", "../assets/imgs/character-icons/rxx82us-1-306x305.png", "../assets/imgs/character-icons/zato-1.png", 
-            "../assets/imgs/character-icons/happy-chaos.png", "../assets/imgs/character-icons/nagoriyuki.png", "../assets/imgs/character-icons/jko.png", "../assets/imgs/character-icons/baiken.png", 
-            "../assets/imgs/character-icons/faust.png", "../assets/imgs/character-icons/Leo.png", "../assets/imgs/character-icons/millia.png", "../assets/imgs/character-icons/axl.png", 
-            "../assets/imgs/character-icons/giovanna.png", "../assets/imgs/character-icons/slayer.png", "../assets/imgs/character-icons/icon-1ubduiak.png", "../assets/imgs/character-icons/dizzy.png"
+            "../assets/imgs/character-icons/sol-badguy.png",     // 1. Sol
+            "../assets/imgs/character-icons/ky-kiske.png",       // 2. Ky
+            "../assets/imgs/character-icons/baiken.png",         // 3. Baiken
+            "../assets/imgs/character-icons/faust.png",          // 4. Faust
+            "../assets/imgs/character-icons/pottemkin.png",      // 5. Potemkin
+            "../assets/imgs/character-icons/happy-chaos.png",    // 6. Chaos
+            "../assets/imgs/character-icons/Leo.png",            // 7. Leo
+            "../assets/imgs/character-icons/zato-1.png",         // 8. Zato
+            "../assets/imgs/character-icons/millia.png",         // 9. Millia
+            "../assets/imgs/character-icons/ramlethal.png",      // 10. Ramlethal
+            "../assets/imgs/character-icons/axl.png",            // 11. Axl
+            "../assets/imgs/character-icons/rxx82us-1-306x305.png", // 12. I-no
+            "../assets/imgs/character-icons/may.png",            // 13. May
+            "../assets/imgs/character-icons/chipp.png",          // 14. Chipp
+            "../assets/imgs/character-icons/giovanna.png",       // 15. Giovanna
+            "../assets/imgs/character-icons/slayer.png",         // 16. Slayer
+            "../assets/imgs/character-icons/jko.png",            // 17. Jack-O
+            "../assets/imgs/character-icons/icon-1ubduiak.png",   // 18. Testament
+            "../assets/imgs/character-icons/nagoriyuki.png",     // 19. Nagoriyuki
+            "../assets/imgs/character-icons/dizzy.png"           // 20. Dizzy
         ];
 
         // variavel pra controlar onde está, inicio não tem nada
@@ -94,7 +113,17 @@
             else if (passo == "pergunta_direto") {
                 document.getElementById("texto-pergunta").innerHTML = "Prefere um estilo mais direto?";
                 document.getElementById("btn-opt1").innerHTML = "Sim, ofensiva total.";
-                document.getElementById("btn-opt2").innerHTML = "Não, prefiro mobilidade.";
+                document.getElementById("btn-opt2").innerHTML = "Não, prefiro focar em mobilidade.";
+            }
+            else if (passo == "pergunta_estilo_mobilidade") {
+                document.getElementById("texto-pergunta").innerHTML = "Que tipo de mobilidade você prefere?";
+                document.getElementById("btn-opt1").innerHTML = "Velocidade aérea e fintas rápidas (Mix-up).";
+                document.getElementById("btn-opt2").innerHTML = "Avanços com golpes de alto impacto.";
+            }
+            else if (passo == "pergunta_impacto") {
+                document.getElementById("texto-pergunta").innerHTML = "Como você quer causar impacto";
+                document.getElementById("btn-opt1").innerHTML = "Com golpes fortes e elegantes.";
+                document.getElementById("btn-opt2").innerHTML = "Com âncoras e golfinhos.";
             }
             else if (passo == "pergunta_plano") {
                 document.getElementById("texto-pergunta").innerHTML = "Quer um plano de jogo simples?";
@@ -116,13 +145,18 @@
                 document.getElementById("btn-opt1").innerHTML = "O básico.";
                 document.getElementById("btn-opt2").innerHTML = "Vou morar no modo treino.";
             }
+            else if (passo == "pergunta_complexidade") {
+                document.getElementById("texto-pergunta").innerHTML = "O que você prefere?";
+                document.getElementById("btn-opt1").innerHTML = "Invocar e comandar pequenos lacaios no mapa.";
+                document.getElementById("btn-opt2").innerHTML = "Controlar dois personagens ao mesmo tempo";
+            }
             else if (passo == "pergunta_conforto") {
                 document.getElementById("texto-pergunta").innerHTML = "Qual sua zona de conforto?";
                 document.getElementById("btn-opt1").innerHTML = "Perto ou Média distância.";
                 document.getElementById("btn-opt2").innerHTML = "Longe do oponente.";
             }
             else if (passo == "pergunta_agarrao") {
-                document.getElementById("texto-pergunta").innerHTML = "Gosta de agarrões (Grappler)?";
+                document.getElementById("texto-pergunta").innerHTML = "Gosta do arquetipo Grappler?<br>(Exemplo: Zangieff do street fighter)";
                 document.getElementById("btn-opt1").innerHTML = "Sim!";
                 document.getElementById("btn-opt2").innerHTML = "Não, prefiro usar técnicas.";
             }
@@ -130,6 +164,11 @@
                 document.getElementById("texto-pergunta").innerHTML = "Busca um personagem 'honesto'?";
                 document.getElementById("btn-opt1").innerHTML = "Sim, fundamentos são a base.";
                 document.getElementById("btn-opt2").innerHTML = "Não, quero mecânicas variadas.";
+            }
+            else if (passo == "pergunta_contra_ataque") {
+                document.getElementById("texto-pergunta").innerHTML = "Gosta de punir erros com contra-ataques fatais?";
+                document.getElementById("btn-opt1").innerHTML = "Sim, vou no erro do oponente.";
+                document.getElementById("btn-opt2").innerHTML = "Não, gosto de criar minhas próprias chances.";
             }
             else if (passo == "pergunta_certeza") {
                 document.getElementById("texto-pergunta").innerHTML = "Realmente quer ser honesto?";
@@ -152,6 +191,7 @@
                 document.getElementById("btn-opt2").innerHTML = "Não, prefiro irritar.";
             }
         }
+                
 
         function escolha(opcaoClicada) {
             //  função das respostas, quando a pessoa aperta o botão, ele envia 1 ou 2, que muda a variavel de "passo"
@@ -166,27 +206,39 @@
                 else { passo = "pergunta_plano"; }
             }
             else if (passo == "pergunta_velocidade") {
-                if (opcaoClicada == 1) { finalizar(4); } // Chipp
+                if (opcaoClicada == 1) { finalizar(13); } // Chipp
                 else { passo = "pergunta_direto"; }
             }
             else if (passo == "pergunta_direto") {
-                if (opcaoClicada == 1) { finalizar(6); } // I-no
-                else { finalizar(14); } // Millia
+                if (opcaoClicada == 1) { finalizar(11); } // I-no
+                else { passo = "pergunta_estilo_mobilidade"; }
+            }
+            else if (passo == "pergunta_estilo_mobilidade") {
+                if (opcaoClicada == 1) { finalizar(8); } // Millia 
+                else { passo = "pergunta_impacto"; }
+            }
+            else if (passo == "pergunta_impacto") {
+                if (opcaoClicada == 1) { finalizar(15); } // Slayer
+                else { finalizar(12); } // May
             }
             else if (passo == "pergunta_plano") {
                 if (opcaoClicada == 1) { passo = "pergunta_risco"; } 
                 else { passo = "pergunta_treino"; }
             }
             else if (passo == "pergunta_risco") {
-                if (opcaoClicada == 1) { finalizar(13); } // Leo
+                if (opcaoClicada == 1) { finalizar(6); } // Leo
                 else { passo = "pergunta_animais"; }
             }
             else if (passo == "pergunta_animais") {
-                if (opcaoClicada == 1) { finalizar(16); } // Giovanna
+                if (opcaoClicada == 1) { finalizar(14); } // Giovanna
                 else { finalizar(0); } // Sol
             }
             else if (passo == "pergunta_treino") {
                 if (opcaoClicada == 1) { finalizar(19); } // Dizzy
+                else { passo = "pergunta_complexidade"; }
+            }
+            else if (passo == "pergunta_complexidade") {
+                if (opcaoClicada == 1) { finalizar(16); } // Jack-O 
                 else { finalizar(7); } // Zato
             }
             else if (passo == "pergunta_conforto") {
@@ -194,30 +246,33 @@
                 else { passo = "pergunta_irritar"; }
             }
             else if (passo == "pergunta_agarrao") {
-                if (opcaoClicada == 1) { finalizar(3); } // Potemkin
+                if (opcaoClicada == 1) { finalizar(4); } // Potemkin
                 else { passo = "pergunta_honesto"; }
             }
             else if (passo == "pergunta_honesto") {
-                if (opcaoClicada == 1) { passo = "pergunta_certeza"; } 
+                if (opcaoClicada == 1) { passo = "pergunta_contra_ataque"; } 
                 else { passo = "pergunta_improviso"; }
+            }
+            else if (passo == "pergunta_contra_ataque") {
+                if (opcaoClicada == 1) { finalizar(2); } // Baiken 
+                else { passo = "pergunta_certeza"; }
             }
             else if (passo == "pergunta_certeza") {
                 if (opcaoClicada == 1) { finalizar(1); } // Ky
-                else { finalizar(9); } // Nago
+                else { finalizar(18); } // Nago
             }
             else if (passo == "pergunta_improviso") {
-                if (opcaoClicada == 1) { finalizar(5); } // Ramlethal
-                else { finalizar(12); } // Faust
+                if (opcaoClicada == 1) { finalizar(9); } // Ramlethal
+                else { finalizar(3); } // Faust
             }
             else if (passo == "pergunta_irritar") {
-                if (opcaoClicada == 1) { finalizar(18); } // Testament
+                if (opcaoClicada == 1) { finalizar(17); } // Testament
                 else { passo = "pergunta_vencer"; }
             }
             else if (passo == "pergunta_vencer") {
-                if (opcaoClicada == 1) { finalizar(8); } // Chaos
-                else { finalizar(15); } // Axl
+                if (opcaoClicada == 1) { finalizar(5); } // Chaos
+                else { finalizar(10); } // Axl
             }
-
             // Se o "passo" tiver a palavra "pergunta", ele refaz a função atualizarTela
             // vê se a pergunta tem "pergunta", se tiver (todas tem) ele atualiza a tela, só termina quando chegar em algum resultado (finalizar()) 
             if (passo.indexOf("pergunta") != -1) {
@@ -238,22 +293,21 @@
 
             var idUsuario = sessionStorage.ID_USUARIO;
             var idPersonagem = indice + 1;
-            var iconeDash = sessionStorage.ID_PERSONAGEM;
-    
-        
-        fetch("/usuarios/salvarPersonagem", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            idUsuarioServer: idUsuario,
-            idPersonagemServer: idPersonagem
-        })
-    }).then(res => {
-        if (res.ok) {
-            console.log("Personagem guardado com sucesso!");
-        }
-    }).catch(err => console.error("Erro:", err));
-        }
+
+                fetch("/usuarios/salvarPersonagem", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        idUsuarioServer: idUsuario,
+                        idPersonagemServer: idPersonagem
+                    })
+                }).then(res => {
+                    if (res.ok) {
+                        sessionStorage.FK_PERSONAGEM = idPersonagem; 
+                        console.log("Personagem guardado e sessão atualizada!"+idPersonagem);
+                    }
+                });
+            }
 
 
         if (sessionStorage.ID_USUARIO == undefined) {
