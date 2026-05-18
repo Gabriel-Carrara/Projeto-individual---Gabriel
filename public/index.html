@@ -128,42 +128,6 @@
 </body>
 <script>    
 
-            var caminhosFotos = [
-            "/assets/imgs/character-icons/sol-badguy.png", "/assets/imgs/character-icons/ky-kiske.png", "/assets/imgs/character-icons/may.png", "/assets/imgs/character-icons/pottemkin.png", 
-            "/assets/imgs/character-icons/chipp.png", "/assets/imgs/character-icons/ramlethal.png", "/assets/imgs/character-icons/rxx82us-1-306x305.png", "/assets/imgs/character-icons/zato-1.png", 
-            "/assets/imgs/character-icons/happy-chaos.png", "/assets/imgs/character-icons/nagoriyuki.png", "/assets/imgs/character-icons/jko.png", "/assets/imgs/character-icons/baiken.png", 
-            "/assets/imgs/character-icons/faust.png", "/assets/imgs/character-icons/Leo.png", "/assets/imgs/character-icons/millia.png", "/assets/imgs/character-icons/axl.png", 
-            "/assets/imgs/character-icons/giovanna.png", "/assets/imgs/character-icons/slayer.png", "/assets/imgs/character-icons/icon-1ubduiak.png", "/assets/imgs/character-icons/dizzy.png"
-        ];
-  // Verifique se o elemento existe antes de atribuir
-// if (sessionStorage.NOME_USUARIO) {
-//     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-// }
-
-// if (sessionStorage.ID_USUARIO != undefined) {
-//     document.getElementById("button-usuario-nao-logado").classList.add("hidden");
-//     document.getElementById("button-usuario-logado").classList.remove("hidden");
-
-//     const idUsuario = sessionStorage.ID_USUARIO;
-
-//     fetch(`/medidas/dashboard/${idUsuario}`, { cache: 'no-store' })
-//         .then(function (response) {
-//             if (response.ok) {
-//                 response.json().then(function (resposta) {
-//                     if (resposta.length > 0) {
-//                         let indice = resposta[0].FK_personagem - 1;
-//                         document.getElementById("img-personagem").src = caminhosFotos[indice];
-//                     }
-//                 });
-//             }
-//         })
-//         .catch(error => console.error('Erro:', error));
-// } else {
-//     document.getElementById("button-usuario-nao-logado").classList.remove("hidden");
-//     document.getElementById("button-usuario-logado").classList.add("hidden");
-// }
-
-
 function pularMusica() {
     // Sorteia de 1 a 17
     let sorteio = parseInt(Math.random() * 17) + 1;
