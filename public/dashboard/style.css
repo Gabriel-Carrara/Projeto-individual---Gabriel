@@ -96,7 +96,7 @@ h1, h2, h3, .saudacao, .sidebar h2 {
 }
   .kpi-card h3 {
     color: var(--accent-color);
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 5px;
 }
 
@@ -119,4 +119,8 @@ h1, h2, h3, .saudacao, .sidebar h2 {
     flex: 1;
     min-height: 0;
     position: relative;
+}
+
+#deslogar{
+  cursor: pointer;
 }

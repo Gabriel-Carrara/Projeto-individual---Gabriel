@@ -249,15 +249,12 @@ header {
     transform: scale(1.03);
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-}
 
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 3px;
-}
-
-body::-webkit-scrollbar{
+.hidden{
     display: none;
+}
+
+.img{
+  height: 80px;
+  border: 6px solid #1a1a1a;
 }

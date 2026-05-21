@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guilty Gear Strive - Personagens</title>
+    <title>Personagens</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/public/assets/imgs/Home-page/disco.png" type="image/x-icon">
+
 </head>
 <body>
 
@@ -19,10 +21,14 @@
       <a href="../dashboard/dashboard.html">DASHBOARD</a>
     </nav>
 
-    <div class="button-login-cadastro">
+
+    <div class="button-login-cadastro" id="usuario-nao-logado">
       <button onclick="window.location.href = '../cadastro/cadastro.html'" class="button-cadastro">C A D A S T R O</button>
       <button onclick="window.location.href = '../login/login.html'" class="btn-login">L O G I N</button>
     </div>
+    <div class="hidden" id="icone">
+            <img class="img" id="b_icone" src="" alt="">
+    </div> 
   </div>
 </header>
 
@@ -114,6 +120,37 @@
 </section>
 
 <script>
+
+        var caminhosFotos = [
+            "../assets/imgs/character-icons/sol-badguy.png",     // 1. Sol
+            "../assets/imgs/character-icons/ky-kiske.png",       // 2. Ky
+            "../assets/imgs/character-icons/baiken.png",         // 3. Baiken
+            "../assets/imgs/character-icons/faust.png",          // 4. Faust
+            "../assets/imgs/character-icons/pottemkin.png",      // 5. Potemkin
+            "../assets/imgs/character-icons/happy-chaos.png",    // 6. Chaos
+            "../assets/imgs/character-icons/Leo.png",            // 7. Leo
+            "../assets/imgs/character-icons/zato-1.png",         // 8. Zato
+            "../assets/imgs/character-icons/millia.png",         // 9. Millia
+            "../assets/imgs/character-icons/ramlethal.png",      // 10. Ramlethal
+            "../assets/imgs/character-icons/axl.png",            // 11. Axl
+            "../assets/imgs/character-icons/rxx82us-1-306x305.png", // 12. I-no
+            "../assets/imgs/character-icons/may.png",            // 13. May
+            "../assets/imgs/character-icons/chipp.png",          // 14. Chipp
+            "../assets/imgs/character-icons/giovanna.png",       // 15. Giovanna
+            "../assets/imgs/character-icons/slayer.png",         // 16. Slayer
+            "../assets/imgs/character-icons/jko.png",            // 17. Jack-O
+            "../assets/imgs/character-icons/icon-1ubduiak.png",   // 18. Testament
+            "../assets/imgs/character-icons/nagoriyuki.png",     // 19. Nagoriyuki
+            "../assets/imgs/character-icons/dizzy.png"           // 20. Dizzy
+        ];
+
+                if(sessionStorage.FK_PERSONAGEM){
+        document.getElementById('usuario-nao-logado').classList.add('hidden')
+        document.getElementById('icone').classList.remove('hidden')
+        let indice=sessionStorage.FK_PERSONAGEM - 1
+        document.getElementById("b_icone").src = caminhosFotos[indice];
+    }    
+
 function select(id, name, description) {
     const displayImg = document.getElementById('idle-anim');
     const nameElement = document.getElementById('char-name');
@@ -130,12 +167,6 @@ function mudarBackground() {
     const imagens = ['1.png', '2.png', '3.png'];
     
     let backgroundAtual = body.style.backgroundImage;
-    
-    // Fallback caso esteja vazio no inline inicialmente
-    if (!backgroundAtual) {
-        body.style.backgroundImage = `url('${caminho}1.png')`;
-        return;
-    }
 
     for (let i = 0; i < imagens.length; i++) {
         if (backgroundAtual.includes(imagens[i])) {
@@ -145,6 +176,13 @@ function mudarBackground() {
         }
     }
 }
+
+
+
+    if (sessionStorage.NOME_USUARIO) {
+        document.getElementById('usuario-nao-logado').classList.add('hidden')
+    }
+
 </script>
 </body>
 </html>

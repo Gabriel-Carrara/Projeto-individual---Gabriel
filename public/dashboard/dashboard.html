@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strive Stats | Dashboard</title>
+    <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/public/assets/imgs/Home-page/disco.png" type="image/x-icon">
+
 </head>
 
 <body onload="hourChange(), obterDadosGrafico()">
@@ -19,7 +21,9 @@
                 <a href="../personagens/personagens.html">PERSONAGENS</a>
                 <a href="../questionario/questionario.html">QUESTIONÁRIO</a>
 
-                <a href="../index.html">SAIR</a>
+                <a href="../index.html">HOME</a>
+                <a onclick="sair_conta()" id="deslogar" class="deslogar">SAIR</a>
+                
             </nav>
         </aside>
 
@@ -38,7 +42,7 @@
                         <img class="img" id="b_icone" src="" alt="">
                 </div> 
                 <div class="kpi-card">
-                    <h3>VOTOS TOTAIS</h3>
+                    <h3>QUANTIDADE DE VEZES QUE O QUIZ FOI FEITO:</h3>
                     <p id="b_tentativas">0</p>
                 </div>
             </div>
@@ -89,9 +93,16 @@
     function hourChange() {
         let horas = new Date().getHours();
         let greetings = document.getElementById("greetings");
-        if (horas >= 18) greetings.innerHTML = 'Boa noite,';
-        else if (horas >= 12) greetings.innerHTML = 'Boa tarde,';
-        else greetings.innerHTML = 'Bom dia,';
+        if (horas >= 18){
+            greetings.innerHTML = 'Boa noite,';
+        }
+            
+        else if (horas >= 12) {
+            greetings.innerHTML = 'Boa tarde,';
+        }
+            else{
+                greetings.innerHTML = 'Bom dia,';
+            }
 }
 // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -259,5 +270,12 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
+    }
+
+
+
+    function sair_conta(){
+        sessionStorage.clear()
+        window.location.href='/index.html'
     }
 </script>

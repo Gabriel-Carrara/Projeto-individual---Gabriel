@@ -541,3 +541,11 @@ body::-webkit-scrollbar{
 .hidden { 
         display: none; 
 }
+
+.img{
+  height: 80px;
+}
+#icone img{
+    border: 6px solid #1a1a1a;
+    height: 80px;
+}
