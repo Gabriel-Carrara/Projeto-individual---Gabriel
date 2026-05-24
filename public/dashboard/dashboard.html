@@ -113,7 +113,7 @@
     // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
     // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
     function obterDadosGrafico() {
-                
+                // icone do personagem
         let indice=sessionStorage.FK_PERSONAGEM - 1
         document.getElementById("b_icone").src = caminhosFotos[indice];
         
@@ -128,12 +128,12 @@
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        
+                        // nome do personagem, caso não tenha nada aparece como nenhum
                             // Atualizando KPIs com os dados do banco
                             document.getElementById("b_personagem").innerHTML = resposta[0].personagem_do_usuario || "Nenhum";
                         
                             
-                        // Calculando total de votos para a KPI
+                        // Passa por todos do objeto json e conta quantas vezes o questionário foi feito globalmente
                         let totalVotos = 0;
                         for (let i = 0; i < resposta.length; i++) {
                             totalVotos += resposta[i].votos_personagem;
@@ -233,8 +233,6 @@
                         console.log(`Dados atuais do gráfico:`);
                         console.log(dados);
 
-                            // Atualizando KPIs com os dados do banco
-                            // CORREÇÃO: Alterado de "resposta" para "novoRegistro" para evitar o erro de variável não definida
                             document.getElementById("b_personagem").innerHTML = novoRegistro[0].personagem_do_usuario || "Nenhum";
                         
                         let totalVotos = 0; 
@@ -243,11 +241,9 @@
                         }
                         document.getElementById("b_tentativas").innerHTML = totalVotos;
 
-                        // CORREÇÃO: Adicionada a atualização do ícone do personagem também no momento da atualização em tempo real
                         let indice = novoRegistro[0].FK_personagem - 1;
                         document.getElementById("img-personagem").src = caminhosFotos[indice];
 
-                        // tirando e colocando valores no gráfico
                         dados.labels = []; 
                         dados.datasets[0].data = []; 
 
@@ -259,7 +255,6 @@
 
                         myChart.update();
 
-                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                         proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 10000);
                     });
                 } else {
@@ -275,6 +270,7 @@
 
 
     function sair_conta(){
+        //desloga o usuario (limpa a sessionStorage)
         sessionStorage.clear()
         window.location.href='/index.html'
     }

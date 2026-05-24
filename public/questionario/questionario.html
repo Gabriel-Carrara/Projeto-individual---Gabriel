@@ -87,6 +87,9 @@
             atualizarTela();
         }
 
+
+        // "passo" é o que determina qual estágio está, com atualizartela() ele vê qual texto deve aparecer
+        
         function atualizarTela() {
             // texto das questões e opções
             if (passo == "pergunta_paciencia") {
@@ -186,7 +189,7 @@
             }
         }
                 
-
+            // todas as respostas são ou 1, ou 2, com o escolha(1)/escolha(2), o que realmente muda é qual if vai acontecer (de acordo com "passo")
         function escolha(opcaoClicada) {
             //  função das respostas, quando a pessoa aperta o botão, ele envia 1 ou 2, que muda a variavel de "passo"
             // caso chegue em final (chegar em algum personagem), ele faz a função finalizar, que puxa o nome e icone do personagem do vetor lá em cima
@@ -287,7 +290,7 @@
 
             var idUsuario = sessionStorage.ID_USUARIO;
             var idPersonagem = indice + 1;
-
+// fetch para dar update na fk_personagem do usuario, e no contador da tabela personagem
                 fetch("/usuarios/salvarPersonagem", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -303,12 +306,12 @@
                 });
             }
 
-
-    //     if (sessionStorage.ID_USUARIO == undefined) {
-    //     alert("Faça o login para acessar o questionário!!");
-    //     window.location = "../login/login.html"; // Redireciona para o login
-    //         console.log(idPersonagem)
-    // }
+            // só pode entrar se estiver logado
+        if (sessionStorage.ID_USUARIO == undefined) {
+        alert("Faça o login para acessar o questionário!!");
+        window.location = "../login/login.html"; // Redireciona para o login
+            console.log(idPersonagem)
+    }
         
     </script>
 </body>
