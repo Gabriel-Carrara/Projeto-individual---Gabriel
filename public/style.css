@@ -170,7 +170,7 @@ max-width: 75rem;
 margin: 0 auto;
 }
 
-.banner-container::after {
+.banner-container::after{
     width: 100%;
     height: 10%;
     position: absolute;
@@ -185,7 +185,6 @@ margin: 0 auto;
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    /* Estilos movidos do inline: */
     min-height: 70vh; 
     padding: 5vh 6vw;
 }
@@ -199,7 +198,6 @@ margin: 0 auto;
 }
 
 .titulo-origem {
-    /* Estilo movido do inline: */
     padding-bottom: 2.5rem;
 }
 
@@ -254,7 +252,6 @@ margin: 0 auto;
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    /* Estilos movidos do inline: */
     min-height: 50vh; 
     padding: 5vh 6vw;
 }

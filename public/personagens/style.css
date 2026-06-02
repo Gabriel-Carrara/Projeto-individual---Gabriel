@@ -139,7 +139,7 @@ header {
 
 .character-grid {
     display: grid;
-    grid-template-columns: repeat(4, 4rem); 
+    grid-template-columns: repeat(4, 5rem); 
     gap: 0.5rem; 
 } 
 

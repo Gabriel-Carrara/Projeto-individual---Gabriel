@@ -170,18 +170,15 @@ function mudarBackground() {
 
     for (let i = 0; i < imagens.length; i++) {
         if (backgroundAtual.includes(imagens[i])) {
-            let proximo = (i + 1) % imagens.length;
+            let proximo = i + 1
+            if(proximo==3) proximo += -3
             body.style.backgroundImage = `url('${caminho}${imagens[proximo]}')`;
+            
             break;
         }
     }
 }
 
-
-
-    if (sessionStorage.NOME_USUARIO) {
-        document.getElementById('usuario-nao-logado').classList.add('hidden')
-    }
 
 </script>
 </body>

@@ -38,8 +38,9 @@ function buscarDadosDash(idUsuario) {
             FK_personagem
         FROM vw_dados_dash 
         WHERE idUsuario = ${idUsuario}
-        ORDER BY votos_personagem DESC 
-        LIMIT 10;
+        ORDER BY votos_personagem DESC
+        LIMIT 14
+        ;
     `;
     
     console.log("Executando SQL: \n" + instrucaoSql);
